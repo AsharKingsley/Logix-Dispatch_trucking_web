@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logix Dispatch - Professional Trucking Services</title>
+<meta name="theme-color" content="#02050f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+<style>:root{--u:1px}@media(min-width:1000px){:root{--u:.86px}}
+
+:root{--bg:#02050f;--card:rgba(5,14,38,.78);--g:#5af2ee;--b:#2d7dff;--mut:#8fb0d6;--line:rgba(90,242,238,.2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:linear-gradient(rgba(2,6,18,.88),rgba(2,6,18,.88)),url('clouds.png') center/cover fixed var(--bg);color:#fff;overflow-x:hidden;padding-bottom:calc(64*var(--u))}
+.wrap{max-width:calc(1360*var(--u));margin:0 auto;padding:0 calc(20*var(--u))}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+
+/* progress + header */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--g),var(--b));z-index:1100}
+header{display:flex;justify-content:space-between;align-items:center;gap:calc(16*var(--u));padding:calc(12*var(--u)) calc(32*var(--u));background:rgba(2,6,18,.9);backdrop-filter:blur(calc(12*var(--u)));position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--line);transition:padding .3s}
+header.small{padding:calc(6*var(--u)) calc(32*var(--u))}
+.logo{font-family:'Orbitron';font-size:calc(28*var(--u));letter-spacing:2px;display:flex;align-items:center;gap:calc(10*var(--u));white-space:nowrap}
+.logo img{height:calc(40*var(--u));border-radius:calc(6*var(--u))}.logo span{color:var(--g)}
+nav{display:flex;gap:calc(16*var(--u));flex-wrap:wrap}
+nav a{color:var(--mut);text-decoration:none;font-size:calc(13*var(--u));font-weight:600;transition:.3s;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:calc(-4*var(--u));height:2px;width:0;background:var(--g);transition:.3s}
+nav a:hover,nav a.on{color:var(--g)}nav a:hover::after,nav a.on::after{width:100%}
+#menu{display:none;background:none;border:1px solid var(--line);color:#fff;font-size:calc(22*var(--u));border-radius:calc(8*var(--u));padding:2px calc(10*var(--u));cursor:pointer}
+.btn{background:linear-gradient(135deg,var(--g),var(--b));color:#000;font-weight:700;padding:calc(12*var(--u)) calc(24*var(--u));border-radius:calc(10*var(--u));text-decoration:none;display:inline-block;font-size:calc(15*var(--u));border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-3px);box-shadow:0 calc(12*var(--u)) calc(24*var(--u)) rgba(90,242,238,.35)}
+.btn::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:rgba(255,255,255,.45);transform:skewX(-25deg);animation:shine 3.5s infinite}
+@keyframes shine{to{left:150%}}
+@media(max-width:1180px){#menu{display:block}nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(2,6,18,.98);padding:calc(18*var(--u)) calc(32*var(--u));flex-direction:column;border-bottom:1px solid var(--line)}nav.open{display:flex}header>.btn{display:none}}
+
+/* cinematic sky intro */
+#sky{--p:0;position:relative;height:420vh}
+.sk{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#050b18}
+.sk>*{position:absolute}
+.sk-bg{inset:0;background:url('truck front .jpg') center/cover;transform:scale(calc(1.05 + var(--p)*.3));filter:blur(calc((1 - var(--p))*calc(12*var(--u)))) brightness(calc(.5 + var(--p)*.5))}
+@keyframes drift{to{translate:5vw -2vh}}
+.sk-vig{inset:0;background:linear-gradient(90deg,rgba(3,9,20,.6),transparent 65%)}
+.sk-fade{left:0;right:0;bottom:0;height:32vh;background:linear-gradient(transparent,var(--bg))}
+.sk-t{left:6vw;bottom:26vh;max-width:min(calc(680*var(--u)),88vw)}
+.sk h2{font-family:'Orbitron';letter-spacing:2px;line-height:.98;text-shadow:0 calc(4*var(--u)) calc(30*var(--u)) rgba(0,0,0,.6);font-size:clamp(calc(44*var(--u)),8vw,calc(98*var(--u)))}
+.sk h2 b{font-weight:400;background:linear-gradient(90deg,var(--g),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sk-t p{color:#cfe7f5;font-size:clamp(calc(16*var(--u)),2vw,calc(21*var(--u)));margin-top:calc(14*var(--u))}
+.t1{opacity:clamp(0,calc(1 - var(--p)*3.2),1);transform:translateY(calc(var(--p)*calc(-70*var(--u))))}
+.t2,.fin{left:0;right:0;margin:auto;text-align:center;max-width:min(calc(860*var(--u)),90vw);bottom:30vh}
+.t2 h2{font-size:clamp(calc(34*var(--u)),6vw,calc(72*var(--u)))}
+.t2{opacity:min(clamp(0,calc((var(--p) - .3)*6),1),clamp(0,calc((.72 - var(--p))*8),1))}
+.fin{opacity:clamp(0,calc((var(--p) - .78)*8),1);pointer-events:none}
+.fin .btn{margin-top:calc(22*var(--u));font-size:calc(17*var(--u))}
+.end .fin{pointer-events:auto}
+.dcard{top:calc(120*var(--u));right:5vw;width:min(calc(340*var(--u)),88vw);background:rgba(8,28,50,.78);border:1px solid rgba(90,242,238,.4);border-radius:calc(14*var(--u));padding:calc(22*var(--u));backdrop-filter:blur(calc(10*var(--u)));box-shadow:0 calc(20*var(--u)) calc(40*var(--u)) rgba(0,0,0,.4);opacity:clamp(0,calc(1 - var(--p)*3),1);transform:translateY(calc(var(--p)*calc(-60*var(--u))))}
+.end .dcard,.mid .dcard{pointer-events:none}
+.dcard h3{font-size:calc(22*var(--u));margin-bottom:calc(8*var(--u))}.dcard p{color:#a9d6ee;font-size:calc(14*var(--u));line-height:1.6;margin-bottom:calc(16*var(--u))}
+.dcard a{display:inline-block;margin-right:calc(8*var(--u));padding:calc(9*var(--u)) calc(16*var(--u));border-radius:calc(8*var(--u));border:1px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;font-size:calc(13*var(--u));font-weight:700;transition:.25s}
+.dcard a.go{background:linear-gradient(135deg,var(--g),var(--b));border-color:transparent;color:#00130a}.dcard a:hover{transform:translateY(-2px);box-shadow:0 calc(8*var(--u)) calc(18*var(--u)) rgba(0,0,0,.35)}
+.sk .live{left:6vw;bottom:calc(84*var(--u))}
+.cue{left:0;right:0;bottom:calc(88*var(--u));text-align:center;font-size:calc(12*var(--u));letter-spacing:3px;color:#a9d6ee;opacity:clamp(0,calc(1 - var(--p)*8),1)}
+.cue i{display:block;font-style:normal;font-size:calc(22*var(--u));animation:bob 1.6s infinite}
+@keyframes bob{50%{transform:translateY(calc(8*var(--u)))}}
+/* deeper descent + HUD */
+.sk-bg{transform-origin:50% 78%;transform:scale(calc(1.1 + var(--p)*.55))}
+.grid3{left:-60%;right:-60%;bottom:0;height:50vh;background:linear-gradient(rgba(90,242,238,.55) 1px,transparent 1px) 0 0/100% calc(46*var(--u)),linear-gradient(90deg,rgba(45,125,255,.5) 1px,transparent 1px) 0 0/calc(70*var(--u)) 100%;transform:perspective(calc(420*var(--u))) rotateX(70deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(transparent,#000 80%);mask-image:linear-gradient(transparent,#000 80%);opacity:clamp(0,calc((var(--p) - .5)*2),.65);animation:gm 1s linear infinite}
+@keyframes gm{to{background-position:0 calc(46*var(--u)),0 0}}
+.scan{left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(90,242,238,.8),transparent);opacity:.45;animation:scn 6s linear infinite}
+@keyframes scn{to{top:100%}}
+.br{width:calc(34*var(--u));height:calc(34*var(--u));border:2px solid rgba(90,242,238,.7)}
+.b1{top:calc(100*var(--u));left:calc(16*var(--u));border-right:0;border-bottom:0}.b2{top:calc(100*var(--u));right:calc(16*var(--u));border-left:0;border-bottom:0}.b3{bottom:calc(72*var(--u));left:calc(16*var(--u));border-right:0;border-top:0}.b4{bottom:calc(72*var(--u));right:calc(16*var(--u));border-left:0;border-top:0}
+.hud{right:5vw;bottom:calc(88*var(--u));text-align:right;min-width:calc(150*var(--u));font-family:'Orbitron';letter-spacing:2px;text-shadow:0 2px calc(14*var(--u)) rgba(0,0,0,.6)}
+.hud small{display:block;font:600 calc(12*var(--u)) Inter;letter-spacing:3px;color:var(--g)}
+.hud b{display:block;font-weight:400;font-size:clamp(calc(30*var(--u)),5vw,calc(56*var(--u)));line-height:1}
+.gauge{height:3px;background:rgba(255,255,255,.2);margin-top:calc(8*var(--u));border-radius:3px;overflow:hidden}
+.gauge i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--b))}
+.feat{display:flex;gap:calc(10*var(--u));justify-content:center;flex-wrap:wrap;margin-top:calc(22*var(--u))}
+.feat span{background:rgba(2,6,18,.55);border:1px solid rgba(90,242,238,.5);padding:calc(9*var(--u)) calc(16*var(--u));border-radius:calc(30*var(--u));font:600 calc(14*var(--u)) Inter;backdrop-filter:blur(calc(8*var(--u)))}
+.pic{border-radius:calc(16*var(--u));overflow:hidden;border:1px solid var(--line);box-shadow:0 calc(14*var(--u)) calc(34*var(--u)) rgba(0,0,0,.5)}
+.himg .pic img{display:block;width:100%;max-width:none;border:0;border-radius:0;box-shadow:none;animation:none;transition:transform 1.2s}
+.pic:hover img{transform:scale(1.05)}
+.himg .pic,.board{max-width:calc(550*var(--u));margin-left:auto;margin-right:auto}
+.board{margin-top:calc(16*var(--u));text-align:left;background:var(--card);border:1px solid var(--line);border-radius:calc(12*var(--u));padding:calc(16*var(--u)) calc(18*var(--u));backdrop-filter:blur(calc(10*var(--u)))}
+.board h4{font-size:calc(14*var(--u));display:flex;align-items:center;gap:calc(8*var(--u));margin-bottom:calc(8*var(--u))}
+.board h4 i{width:calc(9*var(--u));height:calc(9*var(--u));border-radius:50%;background:var(--g);animation:pulse 1.6s infinite}
+.lr{display:flex;justify-content:space-between;gap:calc(10*var(--u));padding:calc(8*var(--u)) 0;border-top:1px solid rgba(255,255,255,.08);font-size:calc(14*var(--u));animation:rowin .5s backwards}
+.lr:nth-child(2){animation-delay:.1s}.lr:nth-child(3){animation-delay:.2s}.lr b{color:var(--g);white-space:nowrap}
+@keyframes rowin{from{opacity:0;transform:translateX(calc(16*var(--u)))}}
+@media(max-width:700px){.hud,.br{display:none}}
+/* blue-green realistic sky */
+/* flowing clouds + motion everywhere */
+#fx{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.cur{position:fixed;left:0;top:0;width:calc(420*var(--u));height:calc(420*var(--u));margin:calc(-210*var(--u)) 0 0 calc(-210*var(--u));border-radius:50%;background:radial-gradient(circle,rgba(90,242,238,.14),transparent 65%);pointer-events:none;z-index:2;mix-blend-mode:screen}
+.title h2{background:linear-gradient(90deg,#fff,var(--g),var(--b),#fff) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:tf 7s linear infinite}
+@keyframes tf{to{background-position:200% 0}}
+.title::before{content:"";display:block;height:1px;width:min(calc(520*var(--u)),80%);margin:0 auto calc(36*var(--u));background:linear-gradient(90deg,transparent,var(--g),var(--b),transparent) 0 0/200% 100%;animation:ln 4s linear infinite}
+@keyframes ln{to{background-position:200% 0}}
+.step b,.stat b{animation:gl 3s ease-in-out infinite alternate}
+@keyframes gl{to{text-shadow:0 0 calc(18*var(--u)) rgba(90,242,238,.8)}}
+.fl2{animation:flash .6s}
+@keyframes flash{from{color:#fff;text-shadow:0 0 calc(24*var(--u)) var(--g);scale:1.12}}
+.pic{position:relative}
+.pic::after,.truck .im::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(45,125,255,.32),rgba(3,10,25,.25) 55%,rgba(90,242,238,.22));mix-blend-mode:soft-light;pointer-events:none;z-index:1}
+.pic img,.truck img{filter:saturate(.85) contrast(1.08) brightness(.9)}
+.himg .pic img,.truck img{animation:kb2 20s ease-in-out infinite alternate}
+@keyframes kb2{to{scale:1.1}}
+.nscene{position:relative;margin-top:calc(60*var(--u));height:clamp(calc(240*var(--u)),34vw,calc(360*var(--u)));border-radius:calc(18*var(--u));overflow:hidden;border:1px solid var(--line);box-shadow:0 calc(20*var(--u)) calc(50*var(--u)) rgba(0,0,0,.55),0 0 calc(40*var(--u)) rgba(90,242,238,.12)}
+.nscene svg{width:100%;height:100%;display:block}
+.mt{animation:mv 60s linear infinite}.mt.b{animation-duration:26s}
+@keyframes mv{to{transform:translateX(-1200px)}}
+.rd{animation:rdm .6s linear infinite}
+@keyframes rdm{to{stroke-dashoffset:-70}}
+.nscene .wh{animation:spin .35s linear infinite}
+.ntxt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 calc(20*var(--u));pointer-events:none;text-shadow:0 calc(4*var(--u)) calc(24*var(--u)) rgba(0,0,0,.8)}
+.ntxt h2{font-family:'Orbitron';font-size:clamp(calc(30*var(--u)),6vw,calc(68*var(--u)));letter-spacing:2px;line-height:1}
+.ntxt p{color:#cfe7f5;margin-top:calc(8*var(--u))}
+.nmap{background-image:radial-gradient(rgba(90,242,238,.16) 1px,transparent 1px);background-size:calc(24*var(--u)) calc(24*var(--u))}
+.nmap svg{width:100%;height:auto;display:block}
+.ln{fill:none;stroke:rgba(90,242,238,.6);stroke-width:2;stroke-dasharray:6 8;animation:dsh 1.6s linear infinite}
+@keyframes dsh{to{stroke-dashoffset:-28}}
+.rg{fill:none;stroke:#5af2ee;transform-box:fill-box;transform-origin:center;animation:rgp 2.4s ease-out infinite}
+@keyframes rgp{from{scale:.4;opacity:.9}to{scale:1.9;opacity:0}}
+.nmap text{fill:#cfe7f5;font:600 calc(15*var(--u)) Inter;text-anchor:middle}
+/* extra motion */
+@property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;background:radial-gradient(circle at 20% 30%,rgba(90,242,238,.13),transparent 40%),radial-gradient(circle at 80% 70%,rgba(45,125,255,.13),transparent 40%);animation:orb 18s ease-in-out infinite alternate}
+@keyframes orb{to{transform:translate(6%,-4%) scale(1.12)}}
+.tick{background:linear-gradient(90deg,#031a3a,#06306b);overflow:hidden;white-space:nowrap;font-size:calc(13*var(--u));font-weight:600;padding:calc(8*var(--u)) 0}
+.tick div{display:inline-block;padding-left:100%;animation:mq 30s linear infinite}
+.tick:hover div{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-100%)}}
+header::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--g),var(--b),transparent) no-repeat;background-size:40% 100%;animation:run 3s linear infinite}
+@keyframes run{from{background-position:-50% 0}to{background-position:150% 0}}
+.logo img{animation:logoin 1.1s backwards,glow 2.8s 1.1s infinite;transition:transform .3s}
+.logo:hover img{transform:rotate(-8deg) scale(1.12)}
+@keyframes logoin{from{transform:rotate(-360deg) scale(0);opacity:0}}
+@keyframes glow{50%{box-shadow:0 0 calc(18*var(--u)) 3px rgba(90,242,238,.7)}}
+.logo{animation:slidein .8s .1s backwards}
+@keyframes slidein{from{opacity:0;transform:translateX(calc(-40*var(--u)))}}
+nav a{animation:drop .6s backwards}
+@keyframes drop{from{opacity:0;transform:translateY(calc(-18*var(--u)))}}
+header>.btn{animation:drop .6s 1s backwards,pulse 2.4s 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(90,242,238,.55)}70%,100%{box-shadow:0 0 0 calc(14*var(--u)) rgba(90,242,238,0)}}
+.speed{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(100deg,transparent 0 calc(60*var(--u)),rgba(255,255,255,.07) calc(60*var(--u)) calc(62*var(--u)));animation:sp 1.6s linear infinite}
+@keyframes sp{to{background-position:calc(-124*var(--u)) 0}}
+.banner img{animation:kb 16s ease-in-out infinite alternate}
+@keyframes kb{to{scale:1.12}}
+.live{position:absolute;left:calc(20*var(--u));bottom:calc(18*var(--u));z-index:2;background:rgba(2,6,18,.85);border:1px solid var(--g);border-radius:calc(30*var(--u));padding:calc(8*var(--u)) calc(16*var(--u));font-weight:700;font-size:calc(14*var(--u));display:flex;align-items:center;gap:calc(10*var(--u));backdrop-filter:blur(calc(6*var(--u)))}
+.live i{width:calc(10*var(--u));height:calc(10*var(--u));border-radius:50%;background:var(--g);animation:pulse 1.6s infinite}
+.frame{position:relative;display:inline-block;padding:3px;border-radius:calc(18*var(--u));background:conic-gradient(from var(--a),var(--g),var(--b),transparent 40%,var(--g));animation:rot 5s linear infinite;box-shadow:0 0 calc(40*var(--u)) rgba(90,242,238,.25);transition:transform .15s}
+@keyframes rot{to{--a:360deg}}
+.frame img{display:block;border:0;border-radius:calc(15*var(--u));box-shadow:none}
+.chip{position:absolute;z-index:2;background:rgba(2,6,18,.92);border:1px solid var(--g);border-radius:calc(30*var(--u));padding:calc(8*var(--u)) calc(14*var(--u));font-size:calc(13*var(--u));font-weight:700;backdrop-filter:blur(calc(6*var(--u)));animation:float 5s ease-in-out infinite}
+.truck .im{position:relative}
+.truck .im::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-20deg);transition:left .9s;z-index:1}
+.truck:hover .im::after{left:140%}
+/* hero */
+.hero{padding:calc(40*var(--u)) 0 calc(10*var(--u))}
+.banner{height:calc(360*var(--u));border-radius:calc(18*var(--u));overflow:hidden;border:1px solid var(--line);box-shadow:0 calc(20*var(--u)) calc(40*var(--u)) rgba(0,0,0,.6);position:relative}
+.banner img{width:100%;height:130%;object-fit:cover;will-change:transform}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(2,6,18,.7),transparent 60%)}
+.hlay{display:flex;align-items:center;gap:calc(40*var(--u));flex-wrap:wrap;margin-top:calc(40*var(--u))}
+.hlay>div{flex:1;min-width:calc(300*var(--u))}
+.badge{background:rgba(90,242,238,.1);color:var(--g);padding:calc(6*var(--u)) calc(16*var(--u));border-radius:calc(20*var(--u));font-size:calc(14*var(--u));font-weight:600;border:1px solid rgba(90,242,238,.3);display:inline-block;margin-bottom:calc(18*var(--u))}
+h1{font-family:'Orbitron';font-size:clamp(calc(46*var(--u)),7vw,calc(78*var(--u)));line-height:.98;letter-spacing:2px;margin-bottom:calc(18*var(--u))}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--g),var(--b),var(--g));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 5s linear infinite}
+@keyframes flow{to{background-position:200%}}
+.hero p.lead{color:var(--mut);font-size:calc(18*var(--u));margin-bottom:calc(28*var(--u));line-height:1.6;max-width:calc(520*var(--u))}
+.himg{text-align:center}
+.himg img{width:100%;max-width:calc(550*var(--u));border-radius:calc(14*var(--u));border:1px solid var(--line);box-shadow:0 calc(14*var(--u)) calc(34*var(--u)) rgba(0,0,0,.5);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(calc(-14*var(--u)))}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(180*var(--u)),1fr));gap:calc(16*var(--u));margin-top:calc(34*var(--u))}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:calc(14*var(--u));padding:calc(22*var(--u));text-align:center;backdrop-filter:blur(calc(10*var(--u)))}
+.stat b{font-family:'Orbitron';font-size:calc(48*var(--u));color:var(--g);display:block;line-height:1}
+.stat small{color:var(--mut);font-size:calc(14*var(--u))}
+
+/* sections */
+.title{text-align:center;margin:calc(90*var(--u)) 0 calc(36*var(--u))}
+.title h2{font-family:'Orbitron';font-size:clamp(calc(34*var(--u)),5vw,calc(50*var(--u)));letter-spacing:1px}
+.title h2::after{content:"";display:block;width:calc(70*var(--u));height:calc(4*var(--u));margin:calc(10*var(--u)) auto 0;border-radius:calc(4*var(--u));background:linear-gradient(90deg,var(--g),var(--b))}
+.title p{color:var(--mut);margin-top:calc(12*var(--u))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:calc(16*var(--u));padding:calc(32*var(--u));backdrop-filter:blur(calc(10*var(--u)))}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(250*var(--u)),1fr));gap:calc(20*var(--u))}
+.box{background:rgba(8,22,54,.8);border:1px solid var(--line);border-radius:calc(12*var(--u));padding:calc(24*var(--u));transition:.35s}
+.box:hover{border-color:var(--g);transform:translateY(calc(-6*var(--u)));box-shadow:0 calc(14*var(--u)) calc(30*var(--u)) rgba(90,242,238,.12)}
+.box h3,.box h4{color:var(--g);margin-bottom:calc(8*var(--u))}
+.box p{color:var(--mut);font-size:calc(14*var(--u));line-height:1.6}
+.box h4 span{color:var(--b);float:right}
+.step b{font-family:'Orbitron';font-size:calc(42*var(--u));color:var(--g);display:block}
+.step h4{color:#fff}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:calc(30*var(--u))}
+@media(max-width:768px){.calc{grid-template-columns:1fr}}
+label{display:block;font-size:calc(14*var(--u));font-weight:600;margin-bottom:calc(8*var(--u));color:var(--b)}
+.fg{margin-bottom:calc(20*var(--u))}
+input,select,textarea{width:100%;padding:calc(14*var(--u));background:rgba(8,22,54,.9);border:1px solid var(--line);border-radius:calc(8*var(--u));color:#fff;font:inherit;font-size:calc(16*var(--u))}
+input[type=range]{padding:0;accent-color:var(--g)}
+.res{background:rgba(2,6,18,.8);border:1px solid var(--g);border-radius:calc(12*var(--u));padding:calc(24*var(--u));box-shadow:0 0 calc(30*var(--u)) rgba(90,242,238,.12)}
+.row{display:flex;justify-content:space-between;padding:calc(12*var(--u)) 0;border-bottom:1px solid rgba(255,255,255,.08);gap:calc(10*var(--u))}
+.row span:first-child{color:var(--mut)}.row b{font-size:calc(18*var(--u))}.neg{color:#ef4444}
+.net{border:0;border-top:2px dashed var(--line);margin-top:calc(12*var(--u));padding-top:calc(16*var(--u))}
+.net b{color:var(--g);font-size:calc(30*var(--u));font-family:'Orbitron'}
+.tw{overflow-x:auto;margin-top:calc(16*var(--u))}
+table{width:100%;border-collapse:collapse}
+th,td{padding:calc(14*var(--u)) calc(18*var(--u));text-align:left;border-bottom:1px solid var(--line);font-size:calc(14*var(--u))}
+th{background:rgba(90,242,238,.1);color:var(--g);font-size:calc(13*var(--u))}
+tbody tr{transition:.25s}tbody tr:hover{background:rgba(90,242,238,.06)}
+.cmp th{background:rgba(45,125,255,.1);color:var(--b);font-size:calc(16*var(--u))}
+.cmp{background:var(--card);border:1px solid var(--line)}
+
+/* qualify, equipment, faq */
+.ql{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(280*var(--u)),1fr));gap:calc(14*var(--u))}
+.ql li{background:rgba(8,22,54,.8);padding:calc(15*var(--u)) calc(20*var(--u));border-radius:calc(8*var(--u));border:1px solid var(--line);font-weight:600;display:flex;gap:calc(12*var(--u))}
+.ql li::before{content:"✔";color:var(--g)}
+.fleet{display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(320*var(--u)),1fr));gap:calc(30*var(--u))}
+.truck{background:var(--card);border-radius:calc(14*var(--u));overflow:hidden;border:1px solid var(--line);transition:.35s}
+.truck:hover{border-color:var(--g);transform:translateY(calc(-6*var(--u)))}
+.truck .im{height:calc(250*var(--u));overflow:hidden;background:#1e293b}
+.truck img{width:100%;height:100%;object-fit:cover;clip-path:inset(0 100% 0 0);transition:clip-path 1.1s .2s,transform .8s}.truck.in img{clip-path:inset(0)}
+.truck:hover img{transform:scale(1.1)}
+.truck div.t{padding:calc(24*var(--u))}.truck p{color:var(--mut);margin-top:calc(6*var(--u))}
+details{background:rgba(8,22,54,.8);border:1px solid var(--line);border-radius:calc(10*var(--u));margin-bottom:calc(14*var(--u))}
+details[open]{border-color:var(--g)}
+summary{padding:calc(20*var(--u));font-weight:700;font-size:calc(18*var(--u));cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:var(--g);font-size:calc(24*var(--u));transition:.3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 calc(20*var(--u)) calc(20*var(--u));color:var(--mut);line-height:1.6}
+.call{background:rgba(45,125,255,.1);border:1px solid var(--b);padding:calc(26*var(--u));border-radius:calc(12*var(--u));margin-top:calc(70*var(--u));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:calc(16*var(--u))}
+.call p{color:var(--mut);font-size:calc(14*var(--u));margin-top:calc(4*var(--u))}
+
+/* form */
+form{display:grid;grid-template-columns:1fr 1fr;gap:calc(20*var(--u))}
+form>*,.dyn{min-width:0}
+.sel{grid-column:span 2;background:rgba(8,22,54,.9);border:1px solid var(--b);padding:calc(20*var(--u));border-radius:calc(12*var(--u))}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(260*var(--u)),1fr));gap:calc(14*var(--u));margin-top:calc(14*var(--u))}
+.opt{background:rgba(2,6,18,.6);border:1px solid var(--line);padding:calc(16*var(--u));border-radius:calc(8*var(--u));display:flex;align-items:center;gap:calc(12*var(--u));cursor:pointer;transition:.2s}
+.opt:hover{border-color:var(--g)}.opt input{width:auto;accent-color:var(--g)}.opt label{margin:0;color:#fff;cursor:pointer}
+.dyn{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:calc(20*var(--u));animation:fi .3s}
+@keyframes fi{from{opacity:0;transform:translateY(calc(-6*var(--u)))}}
+textarea{grid-column:span 2;height:calc(120*var(--u))}form .btn{grid-column:span 2}
+@media(max-width:600px){form,.dyn{grid-template-columns:1fr}.sel,textarea,form .btn,.dyn{grid-column:auto}}
+footer{margin-top:calc(90*var(--u));padding:calc(40*var(--u)) 0;border-top:1px solid var(--line);background:rgba(2,6,18,.95);text-align:center;color:var(--mut);font-size:calc(14*var(--u))}
+footer a{color:var(--g);text-decoration:none;margin:0 calc(8*var(--u))}
+
+/* reveal */
+[data-r]{opacity:0;transform:translateY(calc(46*var(--u)));transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}
+[data-r=l]{transform:translateX(calc(-60*var(--u)))}[data-r=rt]{transform:translateX(calc(60*var(--u)))}[data-r=z]{transform:scale(.9)}
+[data-r].in{opacity:1;transform:none}
+
+/* THE ROAD: truck follows scroll */
+#road{position:fixed;left:0;right:0;bottom:0;height:calc(56*var(--u));z-index:900;pointer-events:none;background:linear-gradient(to top,#12161f,rgba(18,22,31,.92));border-top:2px solid rgba(255,255,255,.18)}
+#road::before{content:"";position:absolute;left:0;right:0;bottom:calc(12*var(--u));height:3px;background:repeating-linear-gradient(90deg,#9fe9ff 0 calc(28*var(--u)),transparent calc(28*var(--u)) calc(56*var(--u)));background-position:var(--rx,0) 0}
+#rig{position:absolute;bottom:calc(14*var(--u));left:0;width:calc(120*var(--u));transition:transform .12s linear;will-change:transform}
+#rig svg{width:calc(120*var(--u));height:calc(40*var(--u));display:block;filter:drop-shadow(0 0 calc(8*var(--u)) rgba(90,242,238,.5))}
+#rig.go{animation:bump .35s infinite}
+@keyframes bump{50%{margin-bottom:2px}}
+.wh{transform-box:fill-box;transform-origin:center}
+#rig.go .wh{animation:spin .4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}[data-r]{opacity:1;transform:none}}
+/* ===== truck-front theme, pages, responsive ===== */
+html{-webkit-text-size-adjust:100%}
+h1,h2,h3,.logo,.hud,.stat b,.step b,.net b{font-family:'Orbitron',sans-serif}
+.title h2,.sk h2,h1,.ntxt h2{text-transform:uppercase;font-weight:800;letter-spacing:1px;overflow-wrap:anywhere}
+.title h2{font-size:clamp(calc(22*var(--u)),3.4vw,calc(38*var(--u)));line-height:1.15;filter:drop-shadow(0 0 calc(14*var(--u)) rgba(90,242,238,.35))}
+.logo{font-size:calc(21*var(--u));font-weight:800;letter-spacing:1px;cursor:pointer}
+h1{font-size:clamp(calc(28*var(--u)),4.6vw,calc(54*var(--u)));line-height:1.08}
+.sk h2{font-size:clamp(calc(28*var(--u)),5.2vw,calc(68*var(--u)));line-height:1.05}
+.t2 h2,.fin h2{font-size:clamp(calc(22*var(--u)),4vw,calc(48*var(--u)))}
+.ntxt h2{font-size:clamp(calc(20*var(--u)),4vw,calc(44*var(--u)))}
+.stat b{font-size:calc(34*var(--u))}.step b{font-size:calc(32*var(--u))}.net b{font-size:calc(24*var(--u))}.hud b{font-size:clamp(calc(24*var(--u)),4vw,calc(40*var(--u)))}
+.cy{color:var(--g);text-shadow:0 0 calc(30*var(--u)) rgba(90,242,238,.55)}
+.bar{display:block;width:calc(96*var(--u));height:calc(6*var(--u));margin:calc(18*var(--u)) 0 calc(6*var(--u));background:#fff;box-shadow:0 0 calc(16*var(--u)) #fff}
+.card,.box,.stat{box-shadow:0 0 calc(30*var(--u)) rgba(45,125,255,.08)}
+nav{gap:calc(14*var(--u));flex-wrap:nowrap}nav a{font-size:calc(13*var(--u));letter-spacing:.3px;white-space:nowrap}
+.pg{display:none}.pg.on{display:block}
+.wrap{min-height:0}
+/* sky: clouds.png part, truck front revealed */
+.sk-bg{background:#02050f url('truck front .jpg') 100% 50%/auto 100% no-repeat;transform-origin:78% 62%;transform:scale(calc(1.25 - var(--p)*.25))}
+.sk-cover{inset:0;background:linear-gradient(90deg,#02050f 0,#02050f calc(100vw - 87vh),transparent calc(100vw - 71vh))}
+.sk-glow{right:4%;bottom:10%;width:55vw;height:45vh;background:radial-gradient(ellipse,rgba(45,125,255,.55),transparent 65%);mix-blend-mode:screen;opacity:clamp(0,calc((var(--p) - .35)*2),1);animation:pls 3s ease-in-out infinite alternate}
+@keyframes pls{to{scale:1.15;filter:brightness(1.3)}}
+.streaks{left:0;right:0;bottom:0;height:36vh;background:repeating-linear-gradient(100deg,transparent 0 calc(100*var(--u)),rgba(90,242,238,.45) calc(100*var(--u)) calc(102*var(--u)),transparent calc(102*var(--u)) calc(210*var(--u))),repeating-linear-gradient(100deg,transparent 0 calc(60*var(--u)),rgba(45,125,255,.4) calc(60*var(--u)) calc(61*var(--u)),transparent calc(61*var(--u)) calc(130*var(--u)));-webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);opacity:clamp(0,calc((var(--p) - .5)*2),.8);animation:stk .8s linear infinite}
+@keyframes stk{to{background-position:calc(-210*var(--u)) 0,calc(-130*var(--u)) 0}}
+.grid3{opacity:clamp(0,calc((var(--p) - .6)*2),.35)}
+.cl{inset:-8%;background:url('clouds.png') center/cover no-repeat;will-change:transform,opacity;filter:brightness(.9) saturate(1.1)}
+.cc{transform-origin:50% 62%;transform:scale(calc(1 + var(--p)*1.6));opacity:clamp(0,calc(1.2 - var(--p)*1.5),1);animation:drift 30s ease-in-out infinite alternate}
+.cp1{background-position:15% 50%;-webkit-mask-image:linear-gradient(90deg,#000 38%,transparent 64%);mask-image:linear-gradient(90deg,#000 38%,transparent 64%);transform:translate3d(calc(var(--p)*-85vw),0,0) scale(calc(1.15 + var(--p)*.9));opacity:clamp(0,calc(1.5 - var(--p)*1.5),1);animation:drift 34s ease-in-out infinite alternate-reverse}
+.cp2{background-position:85% 50%;-webkit-mask-image:linear-gradient(270deg,#000 38%,transparent 64%);mask-image:linear-gradient(270deg,#000 38%,transparent 64%);transform:translate3d(calc(var(--p)*85vw),0,0) scale(calc(1.15 + var(--p)*.9));opacity:clamp(0,calc(1.5 - var(--p)*1.5),1);animation:drift 38s ease-in-out infinite alternate}
+.mid .t1{pointer-events:none}
+/* page transition + pager + idle truck */
+.pager{display:flex;justify-content:space-between;gap:calc(14*var(--u));margin:calc(56*var(--u)) 0 0;flex-wrap:wrap}
+.pager a{padding:calc(14*var(--u)) calc(22*var(--u));border:1px solid var(--line);border-radius:calc(12*var(--u));background:var(--card);backdrop-filter:blur(calc(10*var(--u)));color:#fff;text-decoration:none;font-weight:700;transition:.3s}
+.pager a:hover{border-color:var(--g);box-shadow:0 0 calc(24*var(--u)) rgba(90,242,238,.3);transform:translateY(-3px)}
+.pager a.nx{margin-left:auto;background:linear-gradient(135deg,rgba(90,242,238,.18),rgba(45,125,255,.18))}
+#rig.idle{animation:drive 14s linear infinite}
+@keyframes drive{from{translate:0}to{translate:calc(100vw - calc(130*var(--u)))}}
+/* responsive */
+@media(max-width:1400px){header>.btn{display:none}}
+@media(max-width:1180px){nav.open{display:grid;grid-template-columns:1fr 1fr;gap:calc(14*var(--u)) calc(20*var(--u));max-height:calc(100vh - calc(90*var(--u)));overflow:auto}}
+@media(max-aspect-ratio:1/1){.sk-cover{display:none}}
+@media(max-width:900px){.sk-vig{background:linear-gradient(rgba(2,6,18,.35),rgba(2,6,18,.7))}}
+@media(max-width:600px){header,header.small{padding:calc(10*var(--u)) calc(16*var(--u))}.logo{font-size:calc(17*var(--u))}.logo img{height:calc(32*var(--u))}.title{margin:calc(56*var(--u)) 0 calc(26*var(--u))}.card{padding:calc(20*var(--u))}.hlay{gap:calc(24*var(--u));margin-top:calc(24*var(--u))}.sk-t{bottom:20vh}.dcard{top:calc(96*var(--u));padding:calc(16*var(--u))}.dcard p{font-size:calc(13*var(--u))}.call{padding:calc(18*var(--u))}#road{height:calc(46*var(--u))}body{padding-bottom:calc(52*var(--u))}.pager a{flex:1;text-align:center}h3{overflow-wrap:anywhere}.card h3{font-size:calc(20*var(--u))!important}}
+@media(hover:none){.cur{display:none}}
+/* ===== refine: full-screen feel, new transition, tools ===== */
+header{position:fixed;top:calc(12*var(--u));left:calc(12*var(--u));right:calc(12*var(--u));margin:0 auto;max-width:calc(1400*var(--u));border:1px solid var(--line);border-radius:calc(14*var(--u));padding:calc(10*var(--u)) calc(22*var(--u));background:rgba(2,6,18,.55);-webkit-backdrop-filter:blur(calc(16*var(--u)));backdrop-filter:blur(calc(16*var(--u)))}
+header.small{padding:calc(6*var(--u)) calc(22*var(--u));background:rgba(2,6,18,.82)}
+header::after{left:calc(14*var(--u));right:calc(14*var(--u));width:auto}
+header>.logo{order:0}nav{order:1}#fs{order:2}header>.btn{order:3}#menu{order:4}
+#fs{background:none;border:1px solid var(--line);color:#fff;border-radius:calc(8*var(--u));width:calc(38*var(--u));height:calc(34*var(--u));cursor:pointer;font-size:calc(16*var(--u));transition:.25s}
+#fs:hover{border-color:var(--g);color:var(--g)}
+#hint{position:fixed;left:50%;bottom:calc(64*var(--u));transform:translateX(-50%);z-index:1200;background:rgba(2,6,18,.85);border:1px solid var(--line);border-radius:calc(30*var(--u));padding:calc(9*var(--u)) calc(18*var(--u));font-size:calc(13*var(--u));color:#cfe7f5;transition:opacity .8s;pointer-events:none}
+#hint.hide{opacity:0}
+.dd{position:relative}
+.ddb{background:none;border:0;color:var(--mut);font:600 calc(13*var(--u)) Inter;letter-spacing:.3px;cursor:pointer;transition:.3s}
+.ddb:hover,.dd.has-on .ddb{color:var(--g)}
+.ddm{position:absolute;top:100%;left:calc(-14*var(--u));display:none;flex-direction:column;gap:calc(12*var(--u));padding:calc(16*var(--u)) calc(20*var(--u));margin-top:2px;background:rgba(2,6,18,.96);border:1px solid var(--line);border-radius:calc(12*var(--u));min-width:calc(150*var(--u))}
+.dd:hover .ddm,.dd.open .ddm{display:flex}
+.main{min-height:100svh;padding-top:calc(96*var(--u));display:flex;flex-direction:column;justify-content:center}
+.main .title{margin:0 0 calc(34*var(--u))}
+.main .pg.on~.pg.on{margin-top:calc(70*var(--u))}
+#road{height:calc(46*var(--u));border-top:0;background:linear-gradient(to top,rgba(2,6,18,.92),rgba(2,6,18,.5))}
+#road::before{bottom:calc(8*var(--u))}#rig{bottom:calc(8*var(--u))}
+.title h2{background:linear-gradient(90deg,#fff 40%,var(--g));-webkit-background-clip:text;background-clip:text;color:transparent;animation:none;filter:none}
+.title::before{animation:none;margin-bottom:calc(28*var(--u))}
+.btn::before{animation:none}.btn:hover::before{animation:shine .9s}
+.cur{opacity:.7}
+/* sky layout: text left, full truck right */
+.sk h2{font-size:clamp(calc(26*var(--u)),3.9vw,calc(58*var(--u)))}
+.t2 h2,.fin h2{font-size:clamp(calc(20*var(--u)),2.8vw,calc(40*var(--u)))}
+.sk-t,.t2,.fin{left:6vw;right:auto;margin:0;text-align:left;max-width:min(calc(620*var(--u)),44vw);bottom:24vh}
+.feat{justify-content:flex-start}
+.t2{opacity:min(clamp(0,calc((var(--p) - .3)*6),1),clamp(0,calc((.78 - var(--p))*12),1))}
+.fin{opacity:clamp(0,calc((var(--p) - .78)*12),1)}
+/* page transition */
+.pg{transition:opacity .2s,transform .2s,filter .2s}
+.pg.leave{opacity:0;transform:translateY(calc(-12*var(--u))) scale(.99);filter:blur(calc(6*var(--u)))}
+.pg.enter{animation:pgin .6s cubic-bezier(.2,.7,.2,1)}
+#sky.leave{transform:none;filter:none}#sky.enter{animation:pgfade .6s}
+@keyframes pgin{from{opacity:0;transform:translateY(calc(26*var(--u))) scale(.985);filter:blur(calc(10*var(--u)))}}
+@keyframes pgfade{from{opacity:0}}
+/* lab tools */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(320*var(--u)),1fr));gap:calc(22*var(--u))}
+.tp{grid-column:1/-1}.tools h3{margin-bottom:calc(18*var(--u));font-size:calc(18*var(--u))}
+.tpg{display:grid;grid-template-columns:1fr 1.1fr;gap:calc(28*var(--u));align-items:center}
+@media(max-width:800px){.tpg{grid-template-columns:1fr}}
+#tsv{width:100%;height:auto}#tsv path{fill:none}#tsv text{fill:#cfe7f5;font:600 calc(15*var(--u)) Inter;text-anchor:middle}#t_tk{text-anchor:middle}
+.bars>div{margin-bottom:calc(16*var(--u))}.bars small{color:var(--mut);display:block;margin-bottom:calc(6*var(--u))}
+.bt{height:calc(14*var(--u));border-radius:calc(8*var(--u));background:rgba(255,255,255,.08);overflow:hidden}
+.bt i{display:block;height:100%;width:0;border-radius:calc(8*var(--u));background:linear-gradient(90deg,var(--b),var(--g));transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.bars b{font-size:calc(20*var(--u));display:block;margin-top:calc(6*var(--u))}
+.res2{margin:calc(6*var(--u)) 0 calc(10*var(--u));font-weight:600}.fine{color:var(--mut);font-size:calc(12*var(--u));line-height:1.5;display:block}
+.gauge2{position:relative;max-width:calc(260*var(--u));margin:0 auto calc(14*var(--u))}.gauge2 svg{width:100%;display:block}
+.g0,.g1{fill:none;stroke-width:10;stroke-linecap:round}.g0{stroke:rgba(255,255,255,.1)}
+.g1{stroke:url(#gg);stroke-dasharray:189;stroke-dashoffset:189;transition:stroke-dashoffset .7s}
+.gauge2 b{position:absolute;left:0;right:0;bottom:0;text-align:center;font:800 calc(22*var(--u)) Orbitron}
+/* mobile / small */
+@media(max-width:1180px){#fs{margin-left:auto}#menu{margin-left:0}nav.open{border-radius:0 0 calc(14*var(--u)) calc(14*var(--u));margin-top:calc(6*var(--u))}.dd,.ddm{display:contents!important;position:static}.ddb{display:none}}
+@media(max-width:600px){header,header.small{left:calc(8*var(--u));right:calc(8*var(--u));top:calc(8*var(--u));padding:calc(8*var(--u)) calc(14*var(--u))}}
+@media(max-aspect-ratio:1/1){.sk-bg{background-size:250% auto;background-position:100% 72%}.sk-t,.t2,.fin{left:6vw;right:6vw;max-width:none;top:calc(112*var(--u));bottom:auto}.dcard{top:auto;bottom:calc(70*var(--u));left:calc(12*var(--u));right:calc(12*var(--u));width:auto}}
+/* truck slider + money */
+#cash{position:fixed;inset:0;width:100%;height:100%;z-index:1500;pointer-events:none}
+
+#miles{-webkit-appearance:none;appearance:none;height:calc(44*var(--u));background:transparent;border:0;padding:0;cursor:grab;--fill:0%}
+#miles:active{cursor:grabbing}
+#miles::-webkit-slider-runnable-track{height:calc(6*var(--u));border-radius:calc(6*var(--u));background:linear-gradient(90deg,var(--g) var(--fill),rgba(255,255,255,.16) var(--fill))}
+#miles::-moz-range-track{height:calc(6*var(--u));border-radius:calc(6*var(--u));background:linear-gradient(90deg,var(--g) var(--fill),rgba(255,255,255,.16) var(--fill))}
+#miles::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:calc(46*var(--u));height:calc(33*var(--u));margin-top:calc(-13.5*var(--u));border:0;border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 0 calc(8*var(--u)) rgba(90,242,238,.7))}
+#miles::-moz-range-thumb{width:calc(46*var(--u));height:calc(33*var(--u));border:0;border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+#miles.lv1::-webkit-slider-thumb{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='8' y='-1' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-10 14.5 2.5%29'/%3E%3Ccircle cx='14.5' cy='2.5' r='1.8' fill='%230b6b3a' transform='rotate%28-10 14.5 2.5%29'/%3E%3Crect x='21' y='-2' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%288 27.5 1.5%29'/%3E%3Ccircle cx='27.5' cy='1.5' r='1.8' fill='%230b6b3a' transform='rotate%288 27.5 1.5%29'/%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+#miles.lv1::-moz-range-thumb{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='8' y='-1' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-10 14.5 2.5%29'/%3E%3Ccircle cx='14.5' cy='2.5' r='1.8' fill='%230b6b3a' transform='rotate%28-10 14.5 2.5%29'/%3E%3Crect x='21' y='-2' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%288 27.5 1.5%29'/%3E%3Ccircle cx='27.5' cy='1.5' r='1.8' fill='%230b6b3a' transform='rotate%288 27.5 1.5%29'/%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+#miles.lv2::-webkit-slider-thumb{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='5' y='-4' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-18 11.5 -0.5%29'/%3E%3Ccircle cx='11.5' cy='-0.5' r='1.8' fill='%230b6b3a' transform='rotate%28-18 11.5 -0.5%29'/%3E%3Crect x='14' y='-7' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%286 20.5 -3.5%29'/%3E%3Ccircle cx='20.5' cy='-3.5' r='1.8' fill='%230b6b3a' transform='rotate%286 20.5 -3.5%29'/%3E%3Crect x='23' y='-5' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-8 29.5 -1.5%29'/%3E%3Ccircle cx='29.5' cy='-1.5' r='1.8' fill='%230b6b3a' transform='rotate%28-8 29.5 -1.5%29'/%3E%3Crect x='31' y='-3' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2814 37.5 0.5%29'/%3E%3Ccircle cx='37.5' cy='0.5' r='1.8' fill='%230b6b3a' transform='rotate%2814 37.5 0.5%29'/%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+#miles.lv2::-moz-range-thumb{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='5' y='-4' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-18 11.5 -0.5%29'/%3E%3Ccircle cx='11.5' cy='-0.5' r='1.8' fill='%230b6b3a' transform='rotate%28-18 11.5 -0.5%29'/%3E%3Crect x='14' y='-7' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%286 20.5 -3.5%29'/%3E%3Ccircle cx='20.5' cy='-3.5' r='1.8' fill='%230b6b3a' transform='rotate%286 20.5 -3.5%29'/%3E%3Crect x='23' y='-5' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-8 29.5 -1.5%29'/%3E%3Ccircle cx='29.5' cy='-1.5' r='1.8' fill='%230b6b3a' transform='rotate%28-8 29.5 -1.5%29'/%3E%3Crect x='31' y='-3' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2814 37.5 0.5%29'/%3E%3Ccircle cx='37.5' cy='0.5' r='1.8' fill='%230b6b3a' transform='rotate%2814 37.5 0.5%29'/%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+#miles.lv3::-webkit-slider-thumb{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='3' y='-5' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-25 9.5 -1.5%29'/%3E%3Ccircle cx='9.5' cy='-1.5' r='1.8' fill='%230b6b3a' transform='rotate%28-25 9.5 -1.5%29'/%3E%3Crect x='11' y='-9' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2810 17.5 -5.5%29'/%3E%3Ccircle cx='17.5' cy='-5.5' r='1.8' fill='%230b6b3a' transform='rotate%2810 17.5 -5.5%29'/%3E%3Crect x='19' y='-12' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-12 25.5 -8.5%29'/%3E%3Ccircle cx='25.5' cy='-8.5' r='1.8' fill='%230b6b3a' transform='rotate%28-12 25.5 -8.5%29'/%3E%3Crect x='27' y='-8' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2818 33.5 -4.5%29'/%3E%3Ccircle cx='33.5' cy='-4.5' r='1.8' fill='%230b6b3a' transform='rotate%2818 33.5 -4.5%29'/%3E%3Crect x='33' y='-5' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2828 39.5 -1.5%29'/%3E%3Ccircle cx='39.5' cy='-1.5' r='1.8' fill='%230b6b3a' transform='rotate%2828 39.5 -1.5%29'/%3E%3Crect x='15' y='-3' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%280 21.5 0.5%29'/%3E%3Ccircle cx='21.5' cy='0.5' r='1.8' fill='%230b6b3a' transform='rotate%280 21.5 0.5%29'/%3E%3Crect x='24' y='-2' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-5 30.5 1.5%29'/%3E%3Ccircle cx='30.5' cy='1.5' r='1.8' fill='%230b6b3a' transform='rotate%28-5 30.5 1.5%29'/%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+#miles.lv3::-moz-range-thumb{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -14 62 44'%3E%3Crect x='3' y='-5' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-25 9.5 -1.5%29'/%3E%3Ccircle cx='9.5' cy='-1.5' r='1.8' fill='%230b6b3a' transform='rotate%28-25 9.5 -1.5%29'/%3E%3Crect x='11' y='-9' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2810 17.5 -5.5%29'/%3E%3Ccircle cx='17.5' cy='-5.5' r='1.8' fill='%230b6b3a' transform='rotate%2810 17.5 -5.5%29'/%3E%3Crect x='19' y='-12' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-12 25.5 -8.5%29'/%3E%3Ccircle cx='25.5' cy='-8.5' r='1.8' fill='%230b6b3a' transform='rotate%28-12 25.5 -8.5%29'/%3E%3Crect x='27' y='-8' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2818 33.5 -4.5%29'/%3E%3Ccircle cx='33.5' cy='-4.5' r='1.8' fill='%230b6b3a' transform='rotate%2818 33.5 -4.5%29'/%3E%3Crect x='33' y='-5' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%2828 39.5 -1.5%29'/%3E%3Ccircle cx='39.5' cy='-1.5' r='1.8' fill='%230b6b3a' transform='rotate%2828 39.5 -1.5%29'/%3E%3Crect x='15' y='-3' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%280 21.5 0.5%29'/%3E%3Ccircle cx='21.5' cy='0.5' r='1.8' fill='%230b6b3a' transform='rotate%280 21.5 0.5%29'/%3E%3Crect x='24' y='-2' width='13' height='7' rx='1' fill='%232fbf71' stroke='%230b6b3a' stroke-width='.9' transform='rotate%28-5 30.5 1.5%29'/%3E%3Ccircle cx='30.5' cy='1.5' r='1.8' fill='%230b6b3a' transform='rotate%28-5 30.5 1.5%29'/%3E%3Crect x='1.5' y='2.5' width='38' height='18' rx='2.5' fill='%2306193a' stroke='%235af2ee' stroke-width='1.6'/%3E%3Ctext x='20.5' y='15.5' font-size='11' font-weight='bold' fill='%235af2ee' text-anchor='middle' font-family='Arial'%3E%24%3C/text%3E%3Cpath d='M42 8h10l8 8v6H42z' fill='%235af2ee'/%3E%3Cpath d='M47 10.5h4.5l5 5.5h-9.5z' fill='%23041022'/%3E%3Cg fill='%23041022' stroke='%23e8fbff' stroke-width='1.6'%3E%3Ccircle cx='11' cy='24' r='4'/%3E%3Ccircle cx='23' cy='24' r='4'/%3E%3Ccircle cx='47' cy='24' r='4'/%3E%3Ccircle cx='56' cy='24' r='3.4'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+@media(prefers-reduced-motion:no-preference){#miles.lv3::-webkit-slider-thumb{animation:jig .14s linear infinite}#miles.lv3::-moz-range-thumb{animation:jig .14s linear infinite}}
+@keyframes jig{25%{transform:translate(-1px,-1px)}50%{transform:translate(1px,0)}75%{transform:translate(-1px,1px)}}
+html{scrollbar-width:auto;scrollbar-color:#5af2ee #050b18}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:#050b18}
+::-webkit-scrollbar-thumb{background:linear-gradient(#5af2ee,#2d7dff);border-radius:8px;border:2px solid #050b18}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(#a8fffb,#5aa2ff)}
+</style>
+</head>
+<body>
+<div id="bar"></div><canvas id="fx"></canvas><div id="hint">Tip: tap ⛶ or press F11 for full-screen</div><div class="cur" id="cur"></div>
+
+<header id="top">
+  <div class="logo"><img src="truck logo.jpg" alt="Logix Dispatch logo">LOGIX<span>DISPATCH</span></div>
+  <button id="fs" aria-label="Toggle full screen" title="Full screen">⛶</button><button id="menu" aria-label="Open menu">☰</button>
+  <nav id="nav"><a href="#home">Home</a><a href="#calculator">Calculator</a><a href="#tools">Lab</a><a href="#lease-on">Lease on</a><a href="#dispatch">Dispatch</a><a href="#how-it-works">Process</a><a href="#equipment">Equipment</a><a href="#reviews">Reviews</a><a href="#questions">FAQ</a><span class="dd"><button type="button" class="ddb">More ▾</button><span class="ddm"><a href="#guarantee">Guarantee</a><a href="#deductions">Deductions</a><a href="#qualify">Qualify</a><a href="#compare">Compare</a></span></span><a href="#contact">Contact</a></nav>
+  <a href="#contact" class="btn">Get started</a>
+</header>
+
+<section id="sky" aria-label="Logix Dispatch intro"><div class="sk">
+<div class="sk-bg"></div><div class="sk-cover"></div><div class="sk-glow"></div><div class="grid3"></div><div class="streaks"></div>
+<div class="cl cc"></div><div class="cl cp1"></div><div class="cl cp2"></div><div class="sk-vig"></div><div class="scan"></div>
+<div class="sk-t t1"><h2><span class="cy">Freight moves fast</span><br>when dispatch<br>is <b>smarter.</b></h2><i class="bar"></i><p>Top-paying loads. Zero forced dispatch. You keep 88% of every load.</p><a href="#contact" class="btn" style="margin-top:calc(18*var(--u))">Take action</a></div>
+<div class="dcard"><h3>Driver opportunities</h3><p>Hiring owner-operators. Lease on at 88% payout or bring your own authority. Weekly pay, real support.</p><a href="#lease-on">Learn more</a><a href="#contact" class="go">Apply now</a></div>
+<div class="t2"><h2>Loads booked. Rates negotiated.<br><b>Miles that actually pay.</b></h2><div class="feat"><span>⚡ Live load board</span><span>🤝 Rate negotiation</span><span>📄 Paperwork handled</span><span>💵 Friday settlements</span></div></div>
+<div class="fin"><h2>No matter the distance,<br><b>Logix has your lane.</b></h2><a href="#contact" class="btn">Start hauling with Logix</a><p style="margin-top:calc(14*var(--u));color:#a9d6ee">📞 (800) 555-0199 &nbsp;·&nbsp; Paid every Friday</p></div>
+<div class="live"><i></i>Now dispatching nationwide</div>
+<i class="br b1"></i><i class="br b2"></i><i class="br b3"></i><i class="br b4"></i><div class="hud"><small id="st">STRATOSPHERE</small><b id="alt">38,000 FT</b><div class="gauge"><i id="gi"></i></div></div><div class="cue">SCROLL<i>↓</i></div>
+<div class="sk-fade"></div></div></section>
+<div class="wrap main">
+<section class="hero">
+  
+  <div class="hlay">
+    <div data-r="l">
+      <span class="badge">Next-gen dispatch &amp; lease on</span>
+      <h1>KEEP YOUR TRUCKS MOVING.<br><em>MAXIMIZE YOUR GROSS.</em></h1>
+      <p class="lead">End-to-end dispatching, carrier lease-on programs, transparent fees, and 24/7 dedicated support built for owner-operators.</p>
+      <a href="#calculator" class="btn">Calculate your earnings</a>
+    </div>
+    <div class="himg" data-r="rt"><div class="pic"><img src="truck.webp" alt="Truck dispatching USA"></div><div class="board"><h4><i></i>Sample load board</h4><div id="lb"></div></div></div>
+  </div>
+  <div class="stats" data-g>
+    <div class="stat"><b data-count="250" data-suf="+">0</b><small>Active drivers nationwide</small></div>
+    <div class="stat"><b data-count="88" data-suf="%">0</b><small>Gross payout to you</small></div>
+    <div class="stat"><b data-count="24" data-suf="/7">0</b><small>Dispatcher support</small></div>
+    <div class="stat"><b data-count="4.9" data-dec="1">0</b><small>Driver satisfaction rating</small></div>
+  </div>
+  <p style="text-align:center;color:var(--mut);font-size:calc(14*var(--u));margin-top:calc(22*var(--u))" data-r>🛡️ FMCSA compliant authority &nbsp;·&nbsp; 📊 DAT integrated network &nbsp;·&nbsp; 🚚 Truckstop Pro partner</p>
+</section>
+
+<section id="night"><div class="nscene" data-r="z"><svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="ns" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030712"/><stop offset=".6" stop-color="#0a2540"/><stop offset="1" stop-color="#0a3d91"/></linearGradient><radialGradient id="mn"><stop offset="0" stop-color="#bff6ff" stop-opacity=".7"/><stop offset="1" stop-color="#bff6ff" stop-opacity="0"/></radialGradient><linearGradient id="bm" x1="0" x2="1"><stop offset="0" stop-color="#e8fbff" stop-opacity=".85"/><stop offset="1" stop-color="#e8fbff" stop-opacity="0"/></linearGradient><path id="mp" d="M0 250L120 170 220 230 360 140 480 225 620 160 760 235 900 150 1040 225 1200 175V275H0Z"/></defs>
+<rect width="1200" height="320" fill="url(#ns)"/><g fill="#fff"><circle cx="90" cy="40" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="210" cy="90" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="340" cy="30" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="2s" repeatCount="indefinite"/></circle><circle cx="470" cy="70" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="5s" repeatCount="indefinite"/></circle><circle cx="610" cy="35" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="760" cy="80" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="860" cy="28" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="2s" repeatCount="indefinite"/></circle><circle cx="1100" cy="50" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="150" cy="140" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="5s" repeatCount="indefinite"/></circle><circle cx="700" cy="130" r="1.4"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle></g>
+<circle cx="980" cy="75" r="70" fill="url(#mn)"/><circle cx="980" cy="75" r="22" fill="#e6fcff"/>
+<g class="mt"><use href="#mp" fill="#0b2a4a"/><use href="#mp" x="1200" fill="#0b2a4a"/></g>
+<g class="mt b"><g transform="translate(0 40)"><use href="#mp" x="-400" fill="#06182b"/><use href="#mp" x="800" fill="#06182b"/><use href="#mp" x="2000" fill="#06182b"/></g></g>
+<rect y="262" width="1200" height="58" fill="#050a14"/><line x1="0" y1="266" x2="1200" y2="266" stroke="#5af2ee" stroke-opacity=".6" stroke-width="2"/>
+<line class="rd" x1="0" y1="293" x2="1200" y2="293" stroke="#9fe9ff" stroke-width="3" stroke-dasharray="40 30"/>
+<g><animateTransform attributeName="transform" type="translate" from="-330 0" to="1300 0" dur="12s" repeatCount="indefinite"/>
+<g transform="translate(0 214) scale(2)"><polygon points="112,26 235,8 235,48" fill="url(#bm)"/>
+<rect x="0" y="4" width="78" height="26" rx="3" fill="#101c33" stroke="#5af2ee" stroke-width="1.5"/><text x="39" y="22" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14" letter-spacing="2" fill="#5af2ee">LOGIX</text>
+<path d="M82 10h18l12 11v9H82z" fill="#5af2ee"/><path d="M92 13h7l7 8H92z" fill="#050a14"/>
+<g fill="#050a14" stroke="#cbd5e1" stroke-width="2"><circle class="wh" cx="16" cy="32" r="6"/><circle class="wh" cx="32" cy="32" r="6"/><circle class="wh" cx="92" cy="32" r="6"/><circle class="wh" cx="106" cy="32" r="6"/></g></g></g>
+</svg><div class="ntxt"><h2>Rolling 24/7, night or day</h2><p>Your loads keep moving while you rest.</p></div></div></section>
+
+<section id="calculator">
+  <div class="title" data-r><h2>Weekly gross profit &amp; lane calculator</h2><p>Estimate your weekly revenue from market rates and top regional lanes.</p></div>
+  <div class="card" data-r>
+    <div class="calc">
+      <div>
+        <div class="fg"><label for="equip">Equipment / trailer type</label>
+          <select id="equip" onchange="document.getElementById('rpm').value=this.value;calc()">
+            <option value="2.65" selected>Dry Van ($2.65 / mile avg)</option><option value="3.15">Reefer ($3.15 / mile avg)</option><option value="3.25">Flatbed ($3.25 / mile avg)</option><option value="3.40">Stepdeck / Heavy ($3.40 / mile avg)</option><option value="2.30">Hotshot / Box Truck ($2.30 / mile avg)</option>
+          </select></div>
+        <div class="fg"><label for="miles">Average weekly miles: <span id="mv" style="color:var(--g)">2,800</span> mi</label>
+          <input type="range" id="miles" min="1200" max="4500" step="100" value="2800" oninput="calc()"></div>
+        <div class="fg"><label for="rpm">Custom rate per mile (RPM)</label>
+          <input type="number" id="rpm" step="0.05" value="2.65" oninput="calc()"></div>
+      </div>
+      <div class="res">
+        <div class="row"><span>Estimated gross revenue</span><b id="gr">$0</b></div>
+        <div class="row"><span>Dispatch fee (12%)</span><b class="neg" id="fe">$0</b></div>
+        <div class="row"><span>Estimated fuel (~6.5 MPG)</span><b class="neg" id="fu">$0</b></div>
+        <div class="row"><span>Insurance / fixed weekly</span><b class="neg">-$250.00</b></div>
+        <div class="row net"><span style="color:#fff;font-weight:700">Est. driver take-home</span><b id="np">$0</b></div>
+      </div>
+    </div>
+    <h3 style="margin-top:calc(36*var(--u));font-family:'Orbitron';font-size:calc(28*var(--u));letter-spacing:1px">Top high-paying lanes this week</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Origin ➔ destination</th><th>Distance</th><th>Equipment</th><th>Est. gross rate</th></tr></thead>
+      <tbody>
+        <tr><td>Chicago, IL ➔ Atlanta, GA</td><td>715 mi</td><td>Dry Van / Reefer</td><td><b style="color:var(--g)">$2,350 - $2,800</b></td></tr>
+        <tr><td>Dallas, TX ➔ Columbus, OH</td><td>1,020 mi</td><td>Flatbed / Stepdeck</td><td><b style="color:var(--g)">$3,400 - $3,900</b></td></tr>
+        <tr><td>Harrisburg, PA ➔ Lakeland, FL</td><td>980 mi</td><td>Reefer / Dry Van</td><td><b style="color:var(--g)">$3,100 - $3,650</b></td></tr>
+        <tr><td>Los Angeles, CA ➔ Phoenix, AZ</td><td>370 mi</td><td>Dry Van / Box Truck</td><td><b style="color:var(--g)">$1,300 - $1,650</b></td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<section id="network"><div class="title" data-r><h2>Our freight network</h2><p>Lanes we run every week across the country.</p></div><div class="card nmap" data-r="z"><svg viewBox="0 0 960 440" aria-label="Animated freight lane map"><path id="p1" class="ln" d="M110 290 Q200 190 330 190"/><path id="p2" class="ln" d="M330 190 Q440 110 560 150"/><path id="p3" class="ln" d="M330 190 Q330 290 430 330"/><path id="p4" class="ln" d="M430 330 Q560 380 700 310"/><path id="p5" class="ln" d="M560 150 Q690 200 700 310"/><path id="p6" class="ln" d="M560 150 Q700 80 840 140"/><path id="p7" class="ln" d="M700 310 Q790 330 800 380"/><path id="p8" class="ln" d="M110 290 Q250 400 430 330"/><circle r="4" fill="#5af2ee"><animateMotion dur="5s" begin="-0s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="6s" begin="-2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="7s" begin="-1s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="5s" begin="-3s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="6s" begin="-0s" repeatCount="indefinite"><mpath href="#p6"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="8s" begin="-4s" repeatCount="indefinite"><mpath href="#p8"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="5s" begin="-2s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle><circle r="4" fill="#5af2ee"><animateMotion dur="4s" begin="-1s" repeatCount="indefinite"><mpath href="#p7"/></animateMotion></circle><g transform="translate(110 290)"><circle class="rg" r="14" style="animation-delay:-0.0s"/><circle r="5" fill="#5af2ee"/><text y="-22">Los Angeles</text></g><g transform="translate(330 190)"><circle class="rg" r="14" style="animation-delay:-0.4s"/><circle r="5" fill="#5af2ee"/><text y="-22">Denver</text></g><g transform="translate(430 330)"><circle class="rg" r="14" style="animation-delay:-0.8s"/><circle r="5" fill="#5af2ee"/><text y="-22">Dallas</text></g><g transform="translate(560 150)"><circle class="rg" r="14" style="animation-delay:-1.2s"/><circle r="5" fill="#5af2ee"/><text y="-22">Chicago</text></g><g transform="translate(700 310)"><circle class="rg" r="14" style="animation-delay:-1.6s"/><circle r="5" fill="#5af2ee"/><text y="-22">Atlanta</text></g><g transform="translate(840 140)"><circle class="rg" r="14" style="animation-delay:-2.0s"/><circle r="5" fill="#5af2ee"/><text y="-22">Harrisburg</text></g><g transform="translate(800 380)"><circle class="rg" r="14" style="animation-delay:-2.4s"/><circle r="5" fill="#5af2ee"/><text y="-22">Lakeland</text></g></svg></div></section>
+
+<section id="tools"><div class="title" data-r><h2>Lab tools</h2><p>Interactive estimators. Move the sliders and watch the numbers react.</p></div>
+<div class="tools">
+<div class="card tp" data-r><h3>Trip profit planner</h3><div class="tpg"><div>
+<div class="fg"><label for="t_l">Choose a lane</label><select id="t_l" onchange="tp()"><option value="0">Chicago, IL → Atlanta, GA</option><option value="1">Dallas, TX → Columbus, OH</option><option value="2">Harrisburg, PA → Lakeland, FL</option><option value="3">Los Angeles, CA → Phoenix, AZ</option></select></div>
+<div class="fg"><label for="t_r">Negotiated rate: <span id="t_v" style="color:var(--g)"></span></label><input type="range" id="t_r" min="0" max="100" value="50" oninput="tp()"></div>
+<div class="row"><span>Distance</span><b><span id="t_d">0</span> mi</b></div><div class="row"><span>Gross</span><b id="t_g">$0</b></div><div class="row"><span>Fuel (~6.5 MPG)</span><b class="neg" id="t_f">$0</b></div><div class="row"><span>Logix fee (12%)</span><b class="neg" id="t_fee">$0</b></div><div class="row net"><span style="color:#fff;font-weight:700">Est. net per trip</span><b id="t_n">$0</b></div></div>
+<svg id="tsv" viewBox="0 0 600 300" aria-label="Lane route"><path id="t_path" class="ln" d="M70 210Q300 20 530 210"/><g transform="translate(70 210)"><circle class="rg" r="14"/><circle r="6" fill="#5af2ee"/><text id="t_a" y="34"></text></g><g transform="translate(530 210)"><circle class="rg" r="14" style="animation-delay:-1.2s"/><circle r="6" fill="#5af2ee"/><text id="t_b" y="34"></text></g><text id="t_tk" font-size="26">🚚</text></svg></div></div>
+<div class="card" data-r><h3>Lease on or own authority?</h3>
+<div class="fg"><label for="c_g">Weekly gross: <span id="c_gv" style="color:var(--g)"></span></label><input type="range" id="c_g" min="3000" max="12000" step="100" value="7000" oninput="cmp()"></div>
+<div class="fg"><label for="c_i">Your own insurance per week: <span id="c_iv" style="color:var(--g)"></span></label><input type="range" id="c_i" min="150" max="700" step="10" value="350" oninput="cmp()"></div>
+<div class="bars"><div><small>Lease on with Logix</small><div class="bt"><i id="c_ba"></i></div><b id="c_a">$0</b></div><div><small>Independent dispatch</small><div class="bt"><i id="c_bb"></i></div><b id="c_b">$0</b></div></div>
+<p id="c_r" class="res2"></p><small class="fine">Illustrative estimate: lease on keeps 88% minus $15 ELD and $250 weekly insurance. Independent dispatch keeps about 94% (5-7% fee) minus your own insurance.</small></div>
+<div class="card" data-r><h3>Fuel savings meter</h3>
+<div class="gauge2"><svg viewBox="0 0 140 80"><defs><linearGradient id="gg"><stop offset="0" stop-color="#2d7dff"/><stop offset="1" stop-color="#5af2ee"/></linearGradient></defs><path class="g0" d="M10 70A60 60 0 0 1 130 70"/><path id="u_gv" class="g1" d="M10 70A60 60 0 0 1 130 70"/></svg><b id="u_gn">$0</b></div>
+<div class="fg"><label for="u_m">Miles per week: <span id="u_mv" style="color:var(--g)"></span></label><input type="range" id="u_m" min="1200" max="4500" step="100" value="2800" oninput="fuel()"></div>
+<div class="fg"><label for="u_p">Truck MPG: <span id="u_pv" style="color:var(--g)"></span></label><input type="range" id="u_p" min="5" max="9" step=".1" value="6.5" oninput="fuel()"></div>
+<div class="fg"><label for="u_d">Discount per gallon (up to $0.50): <span id="u_dv" style="color:var(--g)"></span></label><input type="range" id="u_d" min="10" max="50" step="5" value="50" oninput="fuel()"></div>
+<div class="row"><span>Gallons per week</span><b id="u_g">0</b></div><div class="row"><span>Weekly savings</span><b id="u_w">$0</b></div><div class="row net"><span style="color:#fff;font-weight:700">Yearly savings</span><b id="u_y">$0</b></div></div>
+</div></section>
+
+<section id="guarantee">
+  <div class="title" data-r><h2>Our no-risk carrier guarantee</h2><p>We remove the usual dispatch headaches so you can focus on driving.</p></div>
+  <div class="grid" data-g>
+    <div class="box"><h3>🚫 Zero long-term lock-in</h3><p>No rigid contracts. Work week to week and leave anytime with standard notice.</p></div>
+    <div class="box"><h3>🛑 100% right of refusal</h3><p>Never forced dispatch. You decide where you drive, when you take home time, and which loads you accept.</p></div>
+    <div class="box"><h3>📄 Full rate transparency</h3><p>You get the original broker rate confirmation on your phone. What the broker pays is what we report.</p></div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="title" data-r><h2>What drivers say about us</h2><p>Feedback from owner-operators hauling with Logix.</p></div>
+  <div class="grid" data-g>
+    <div class="box"><div style="color:var(--g);font-size:calc(18*var(--u));margin-bottom:calc(10*var(--u))">★★★★★</div><p style="color:#fff;font-style:italic;margin-bottom:calc(14*var(--u))">"I leased on 6 months ago with my sleeper. My average weekly gross went from $5,800 on my own to $7,900 with Logix dispatchers."</p><h4 style="color:var(--b)">Marcus T., owner-operator, reefer</h4></div>
+    <div class="box"><div style="color:var(--g);font-size:calc(18*var(--u));margin-bottom:calc(10*var(--u))">★★★★★</div><p style="color:#fff;font-style:italic;margin-bottom:calc(14*var(--u))">"No forced dispatch is real here. If a load doesn't pay $2.80+ or goes somewhere I don't want to drive, my dispatcher finds another option."</p><h4 style="color:var(--b)">Dave &amp; Sarah K., team drivers, dry van</h4></div>
+    <div class="box"><div style="color:var(--g);font-size:calc(18*var(--u));margin-bottom:calc(10*var(--u))">★★★★★</div><p style="color:#fff;font-style:italic;margin-bottom:calc(14*var(--u))">"The paperwork relief alone is worth it. Invoicing, broker setups, rate confirms. They handle everything while I focus on miles."</p><h4 style="color:var(--b)">Jason M., independent owner, flatbed</h4></div>
+  </div>
+</section>
+
+<section id="lease-on">
+  <div class="title" data-r><h2>Lease on program</h2><p>Run under our active DOT/MC authority with maximum freedom.</p></div>
+  <div class="grid" data-g>
+    <div class="box"><h3>88% gross payout</h3><p>Keep 88% of every load. No hidden fees or surprise charges.</p></div>
+    <div class="box"><h3>Fuel card discounts</h3><p>Major fuel networks with up to $0.50/gal savings at the pump.</p></div>
+    <div class="box"><h3>Insurance &amp; ELD provided</h3><p>Liability and cargo insurance options plus compliance ELD support.</p></div>
+  </div>
+</section>
+
+<section id="dispatch">
+  <div class="title" data-r><h2>Independent dispatch services</h2><p>Have your own authority? We handle your load negotiations.</p></div>
+  <div class="grid" data-g>
+    <div class="box"><h3>Dedicated dispatcher</h3><p>One-on-one contact with dispatchers who know your preferred lanes.</p></div>
+    <div class="box"><h3>Rate negotiation</h3><p>We fight for top market rates on DAT, Truckstop, and direct broker channels.</p></div>
+    <div class="box"><h3>Full paperwork handling</h3><p>Invoicing, broker setups, rate confirmations, and BOLs handled for you.</p></div>
+  </div>
+</section>
+
+<section id="deductions">
+  <div class="title" data-r><h2>What we deduct</h2><p>Full transparency. No surprise deductions or hidden costs.</p></div>
+  <div class="grid" data-g>
+    <div class="box"><h4>Dispatch / lease percentage <span>12%</span></h4><p>We keep 12%, you take home 88% of total gross load earnings.</p></div>
+    <div class="box"><h4>Liability &amp; cargo insurance <span>Weekly rate</span></h4><p>Deducted directly from your weekly settlement statement.</p></div>
+    <div class="box"><h4>ELD &amp; telematics <span>$15 / wk</span></h4><p>FMCSA compliant logging software and hardware support.</p></div>
+    <div class="box"><h4>Fuel advances / card charges <span>At cost</span></h4><p>Deducted based on your actual fuel card usage.</p></div>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="title" data-r><h2>How it works</h2><p>From application to your first payout in 4 steps.</p></div>
+  <div class="grid" data-g>
+    <div class="box step"><b>01</b><h4>Apply &amp; upload docs</h4><p>Submit your CDL, truck inspection, and registration online in under 5 minutes.</p></div>
+    <div class="box step"><b>02</b><h4>Sign the agreement</h4><p>Sign our lease-on or independent dispatch contract digitally.</p></div>
+    <div class="box step"><b>03</b><h4>Set up lanes</h4><p>Talk with your dispatcher to set preferred lanes, schedule, and rate targets.</p></div>
+    <div class="box step"><b>04</b><h4>Haul &amp; get paid weekly</h4><p>Direct deposit every Friday with clear itemized pay stubs.</p></div>
+  </div>
+</section>
+
+<section id="qualify">
+  <div class="title" data-r><h2>What you need to qualify</h2><p>Requirements to start driving under our company.</p></div>
+  <ul class="ql card" data-g>
+    <li>Valid Class A CDL with 2+ years experience</li><li>Clean driving record (MVR), no major violations</li><li>Passing DOT drug test and active Clearinghouse record</li><li>Clean DOT annual truck &amp; trailer inspection (last 30 days)</li><li>Bobtail / non-trucking liability insurance</li><li>ELD compatible equipment or smart mobile device</li>
+  </ul>
+</section>
+
+<section id="compare">
+  <div class="title" data-r><h2>Compare your options</h2><p>Lease on with Logix vs. independent dispatch.</p></div>
+  <div class="tw" data-r><table class="cmp">
+    <thead><tr><th>Feature</th><th>Lease on under Logix</th><th>Independent dispatch</th></tr></thead>
+    <tbody>
+      <tr><td><b>Authority needed</b></td><td>None (use our MC/DOT)</td><td>Your own active MC/DOT</td></tr>
+      <tr><td><b>Payout</b></td><td>88% of gross</td><td>Pay 5% - 7% per load</td></tr>
+      <tr><td><b>Commercial insurance</b></td><td>Provided under our policy</td><td>You supply your own policy</td></tr>
+      <tr><td><b>Fuel discounts</b></td><td>Included (company fuel card)</td><td>Optional add-on</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="equipment">
+  <div class="title" data-r><h2>Equipment we dispatch</h2><p>Dispatch solutions for every trailer and truck type.</p></div>
+  <div class="fleet">
+    <div class="truck" data-r="l"><div class="im"><img src="6 benifits of the dispatch truck.webp" alt="Dry van and reefer"></div><div class="t"><h3>Dry van &amp; reefer trailers</h3><p>Consistent year-round freight across high-volume shipping corridors.</p></div></div>
+    <div class="truck" data-r="rt"><div class="im"><img src="steps involved in the dispatching.webp" alt="Flatbed and stepdeck"></div><div class="t"><h3>Flatbed, stepdeck &amp; box trucks</h3><p>High-paying heavy haul, oversized cargo, and local box truck dispatching.</p></div></div>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="title" data-r><h2>Straight answers</h2><p>What drivers ask us most before joining.</p></div>
+  <div data-r>
+    <details><summary>Are there long-term forced contracts?</summary><p>No. We earn your business every week. There are no lock-in contracts; you can leave with proper notice.</p></details>
+    <details><summary>Do you force dispatch loads?</summary><p>Never. You have 100% right of refusal on any load. You tell us where you want to drive, your home time needs, and minimum rate.</p></details>
+    <details><summary>How fast do I get paid after completing a load?</summary><p>Settlements are processed weekly every Friday by direct ACH deposit once your clean BOL/POD copies are submitted.</p></details>
+    <details><summary>Can I use my own fuel card?</summary><p>Yes. Use your own cards, or use our company fuel discount program to save up to $0.50/gal at major fuel stops nationwide.</p></details>
+  </div>
+  <div class="call" data-r>
+    <div><h3>Questions before you sign up?</h3><p>Talk directly with our onboarding desk. No automated phone trees.</p></div>
+    <a href="tel:18005550199" class="btn" style="background:var(--b)">📞 Call (800) 555-0199</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="title" data-r><h2>Carrier application &amp; contact</h2><p>Choose your setup and the form adapts to you.</p></div>
+  <div class="card" data-r>
+    <form onsubmit="event.preventDefault();alert('Application submitted successfully! A dispatch representative will reach out shortly.')">
+      <div class="sel"><b>Do you operate under your own MC operating authority? *</b>
+        <div class="opts">
+          <div class="opt"><input type="radio" id="ay" name="mc" onchange="auth()" checked><label for="ay">Yes, I have an active MC/DOT authority. Request independent dispatch.</label></div>
+          <div class="opt"><input type="radio" id="an" name="mc" onchange="auth()"><label for="an">No, I want to lease on under Logix operating authority.</label></div>
+        </div></div>
+      <input type="text" placeholder="Full name / primary contact *" required aria-label="Full name">
+      <input type="tel" placeholder="Direct phone number *" required aria-label="Phone">
+      <input type="email" placeholder="Email address *" required aria-label="Email">
+      <input type="text" placeholder="Company name (if applicable)" aria-label="Company">
+      <div id="fd" class="dyn"><input type="text" placeholder="MC number (e.g. MC-123456) *" required aria-label="MC number"><input type="text" placeholder="DOT number (e.g. 1234567) *" required aria-label="DOT number"></div>
+      <div id="fl" class="dyn" style="display:none">
+        <select aria-label="Equipment owned"><option value="">Equipment type owned</option><option>Sleeper tractor only</option><option>Tractor &amp; trailer package</option><option>Straight box truck</option></select>
+        <select aria-label="CDL experience"><option value="">CDL Class A experience</option><option>2 - 3 years</option><option>3 - 5 years</option><option>5+ years</option></select>
+      </div>
+      <textarea placeholder="Tell us about your equipment, lanes, home time needs, or questions..." aria-label="Message"></textarea>
+      <button type="submit" class="btn">Submit application</button>
+    </form>
+  </div>
+</section>
+</div>
+
+<div class="wrap"><div id="pager" class="pager"></div></div>
+<footer><div class="wrap"><p>&copy; 2026 Logix Dispatch Services. All rights reserved.</p>
+<p style="margin-top:calc(10*var(--u))"><a href="#calculator">Calculator</a><a href="#lease-on">Lease on</a><a href="#dispatch">Dispatch</a><a href="#contact">Contact us</a></p></div></footer>
+
+<!-- Road with truck driven by scroll -->
+<div id="road" aria-hidden="true">
+  <div id="rig">
+    <svg viewBox="0 0 120 40">
+      <rect x="0" y="4" width="78" height="26" rx="3" fill="#18233b" stroke="#5af2ee" stroke-width="1.5"/>
+      <text x="39" y="22" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14" letter-spacing="2" fill="#5af2ee">LOGIX</text>
+      <path d="M82 10h18l12 11v9H82z" fill="#5af2ee"/>
+      <path d="M92 13h7l7 8H92z" fill="#02050f"/>
+      <rect x="110" y="25" width="6" height="3" fill="#e8fbff"/>
+      <g fill="#02050f" stroke="#cbd5e1" stroke-width="2"><circle class="wh" cx="16" cy="32" r="6"/><circle class="wh" cx="32" cy="32" r="6"/><circle class="wh" cx="92" cy="32" r="6"/><circle class="wh" cx="106" cy="32" r="6"/></g>
+      <g stroke="#cbd5e1" stroke-width="1.5"><path class="wh" d="M16 28v8M32 28v8M92 28v8M106 28v8"/></g>
+    </svg>
+  </div>
+</div>
+
+<script>
+function auth(){var y=document.getElementById('ay').checked;document.getElementById('fd').style.display=y?'grid':'none';document.getElementById('fl').style.display=y?'none':'grid'}
+function calc(){
+  var m=+document.getElementById('miles').value,r=parseFloat(document.getElementById('rpm').value)||0;
+  document.getElementById('mv').textContent=m.toLocaleString();
+  var g=m*r,f=g*.12,u=m/6.5*4.15,n=Math.max(0,g-f-u-250),o={minimumFractionDigits:2,maximumFractionDigits:2};
+  document.getElementById('gr').textContent='$'+g.toLocaleString('en-US',o);
+  document.getElementById('fe').textContent='-$'+f.toLocaleString('en-US',o);
+  document.getElementById('fu').textContent='-$'+u.toLocaleString('en-US',o);
+  var ne=document.getElementById('np');ne.textContent='$'+n.toLocaleString('en-US',o);ne.classList.remove('fl2');void ne.offsetWidth;ne.classList.add('fl2');
+}
+calc();
+
+// mobile menu
+var nav=document.getElementById('nav');
+document.getElementById('menu').onclick=function(){nav.classList.toggle('open')};
+nav.addEventListener('click',function(e){if(e.target.tagName=='A')nav.classList.remove('open')});
+
+// reveal on scroll (grids stagger their children)
+document.querySelectorAll('[data-g]').forEach(function(g){Array.prototype.forEach.call(g.children,function(c,i){c.setAttribute('data-r','');c.style.transitionDelay=i*.12+'s'})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)});
+
+// count-up
+var co=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;co.unobserve(e.target);
+  var el=e.target,t=+el.dataset.count,d=+el.dataset.dec||0,s=el.dataset.suf||'',t0=performance.now();
+  (function s2(now){var p=Math.min((now-t0)/1600,1),v=t*(1-Math.pow(1-p,3));el.textContent=v.toFixed(d)+s;if(p<1)requestAnimationFrame(s2)})(t0);
+})},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+var sky=document.getElementById('sky');
+
+function sk(){if(!sky.offsetHeight)return;var r=sky.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));sky.style.setProperty('--p',p.toFixed(4));sky.classList.toggle('mid',p>.45);sky.classList.toggle('end',p>.8);document.getElementById('alt').textContent=Math.round((1-p)*38000).toLocaleString('en-US')+' FT';document.getElementById('st').textContent=p<.25?'STRATOSPHERE':p<.55?'CLOUD LAYER':p<.9?'DESCENDING':'SURFACE REACHED';document.getElementById('gi').style.width=p*100+'%'}
+// scroll: progress bar, truck on the road, parallax, active nav
+var rig=document.getElementById('rig'),road=document.getElementById('road'),bar=document.getElementById('bar'),
+    hd=document.getElementById('top'),pb=document.getElementById('pbanner'),links=nav.querySelectorAll('a'),
+    secs=Array.prototype.map.call(links,function(a){return document.querySelector(a.getAttribute('href'))}),tm,tick=false;
+function onScroll(){
+  var y=window.scrollY,max=document.documentElement.scrollHeight-innerHeight,p=max>0?y/max:0;
+  bar.style.width=p*100+'%';
+  rig.style.transform='translateX('+p*(innerWidth-130)+'px)';
+  road.style.setProperty('--rx',-y+'px');
+  rig.classList.toggle('idle',max<=60);rig.classList.add('go');clearTimeout(tm);tm=setTimeout(function(){if(max>60)rig.classList.remove('go')},160);
+  hd.classList.toggle('small',y>60);sk();
+  if(pb)pb.style.transform='translateY('+(-Math.min(y,500)*.12)+'px)';
+  tick=false;
+}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
+addEventListener('resize',onScroll);onScroll();
+links.forEach(function(a,i){a.style.animationDelay=.4+i*.06+'s'});
+var LD=[['Chicago, IL → Atlanta, GA','$2.95/mi'],['Dallas, TX → Columbus, OH','$3.40/mi'],['Harrisburg, PA → Lakeland, FL','$3.20/mi'],['Los Angeles, CA → Phoenix, AZ','$3.55/mi'],['Houston, TX → Memphis, TN','$3.10/mi'],['Denver, CO → Salt Lake City, UT','$3.30/mi']],bi=0,lb=document.getElementById('lb');
+function board(){var h='';for(var k=0;k<3;k++){var l=LD[(bi+k)%LD.length];h+='<div class="lr"><span>'+l[0]+'</span><b>'+l[1]+'</b></div>'}lb.innerHTML=h;bi=(bi+1)%LD.length}
+board();setInterval(board,3200);
+
+(function(){var c=document.getElementById('fx'),x=c.getContext('2d'),P=[],W,H,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight}rs();addEventListener('resize',rs);
+for(var i=0;i<70;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+.4});
+function loop(){x.clearRect(0,0,W,H);
+for(var i=0;i<P.length;i++){var a=P[i];if(!rm){a.x+=a.vx;a.y+=a.vy}if(a.x<0)a.x=W;if(a.x>W)a.x=0;if(a.y<0)a.y=H;if(a.y>H)a.y=0;
+x.fillStyle='rgba(90,242,238,.7)';x.beginPath();x.arc(a.x,a.y,a.r,0,6.3);x.fill();
+for(var j=i+1;j<P.length;j++){var b=P[j],dx=a.x-b.x,dy=a.y-b.y,d=dx*dx+dy*dy;if(d<14000){x.strokeStyle='rgba(45,125,255,'+(1-d/14000)*.25+')';x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}}
+if(!rm)requestAnimationFrame(loop)}loop();
+var cu=document.getElementById('cur');addEventListener('mousemove',function(e){cu.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'});
+})();
+
+// ===== page router: every menu item opens as its own page =====
+var LBL={home:'Home',calculator:'Calculator',tools:'Lab tools',guarantee:'Guarantee',reviews:'Testimonials','lease-on':'Lease on',dispatch:'Dispatch',deductions:'Deductions','how-it-works':'How it works',qualify:'Requirements',compare:'Compare',equipment:'Equipment',questions:'FAQ',contact:'Contact'},
+ORD=Object.keys(LBL),PG={home:['#sky','.hero','#night'],calculator:['#calculator','#network']},cur0=null,
+pager=document.getElementById('pager');
+ORD.forEach(function(k){if(!PG[k])PG[k]=['#'+k]});
+var ALL=[].concat.apply([],ORD.map(function(k){return PG[k]}));
+ALL.forEach(function(q){document.querySelector(q).classList.add('pg')});
+function show(r){
+  ALL.forEach(function(q){document.querySelector(q).classList.remove('on')});
+  PG[r].forEach(function(q){var el=document.querySelector(q);el.classList.add('on');el.classList.remove('enter');void el.offsetWidth;el.classList.add('enter');el.querySelectorAll('[data-r]').forEach(function(x){x.classList.remove('in');io.observe(x)})});
+  links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+r)});var dd=document.querySelector('.dd');dd.classList.remove('open');dd.classList.toggle('has-on',!!dd.querySelector('a.on'));
+  var i=ORD.indexOf(r),pv=ORD[i-1]||'home',nx=ORD[i+1];
+  pager.innerHTML=r==='home'?'':'<a href="#'+pv+'">← '+LBL[pv]+'</a><a href="#'+(nx||'home')+'" class="nx">'+(nx?LBL[nx]:'Back to home')+' →</a>';
+  document.title=r==='home'?'Logix Dispatch - Professional Trucking Services':LBL[r]+' | Logix Dispatch';
+}
+function route(first){
+  var r=location.hash.slice(1);if(!PG[r])r='home';
+  if(r===cur0&&!first)return;
+  function run(){show(r);cur0=r;window.scrollTo(0,0);onScroll()}
+  if(first||matchMedia('(prefers-reduced-motion:reduce)').matches){run();return}
+  ALL.forEach(function(q){var e=document.querySelector(q);e.classList.remove('enter');if(e.classList.contains('on'))e.classList.add('leave')});setTimeout(function(){ALL.forEach(function(q){document.querySelector(q).classList.remove('leave')});run()},200);
+}
+addEventListener('hashchange',function(){route()});
+document.querySelector('.logo').onclick=function(){location.hash='home'};
+route(true);addEventListener('load',function(){if(location.hash)scrollTo(0,0)});
+
+// ===== full screen, dropdown, hint =====
+var fsb=document.getElementById('fs');if(!document.documentElement.requestFullscreen)fsb.style.display='none';
+fsb.onclick=function(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
+document.addEventListener('fullscreenchange',function(){fsb.textContent=document.fullscreenElement?'✕':'⛶'});
+document.querySelector('.ddb').onclick=function(){this.parentNode.classList.toggle('open')};
+setTimeout(function(){document.getElementById('hint').classList.add('hide')},6000);
+// ===== lab tools =====
+function E(i){return document.getElementById(i)}
+function cu(el,v,pre){var a=+el.dataset.v||0,t0=performance.now();el.dataset.v=v;(function f(n){var k=Math.min((n-t0)/650,1),x=a+(v-a)*(1-Math.pow(1-k,3));el.textContent=(pre||'')+Math.round(x).toLocaleString('en-US');if(k<1)requestAnimationFrame(f)})(t0)}
+var LN=[['Chicago, IL → Atlanta, GA',715,2350,2800],['Dallas, TX → Columbus, OH',1020,3400,3900],['Harrisburg, PA → Lakeland, FL',980,3100,3650],['Los Angeles, CA → Phoenix, AZ',370,1300,1650]],CUR=[20,70,0,110];
+function tp(){var i=+E('t_l').value,l=LN[i],g=Math.round(l[2]+(l[3]-l[2])*(+E('t_r').value/100)),f=l[1]/6.5*4.15,fe=g*.12,n=l[0].split(' → ');
+E('t_v').textContent='$'+g.toLocaleString('en-US');cu(E('t_d'),l[1]);cu(E('t_g'),g,'$');cu(E('t_f'),f,'$');cu(E('t_fee'),fe,'$');cu(E('t_n'),g-fe-f,'$');
+E('t_path').setAttribute('d','M70 210Q300 '+CUR[i]+' 530 210');E('t_a').textContent=n[0];E('t_b').textContent=n[1]}
+function cmp(){var g=+E('c_g').value,i=+E('c_i').value,a=g*.88-15-250,b=g*.94-i,m=Math.max(a,b,1),d=a-b;
+E('c_gv').textContent='$'+g.toLocaleString('en-US');E('c_iv').textContent='$'+i;cu(E('c_a'),a,'$');cu(E('c_b'),b,'$');
+E('c_ba').style.width=Math.max(a,0)/m*100+'%';E('c_bb').style.width=Math.max(b,0)/m*100+'%';
+E('c_r').textContent=(d>=0?'Lease on keeps ':'Independent dispatch keeps ')+'$'+Math.round(Math.abs(d)).toLocaleString('en-US')+' more per week ($'+Math.round(Math.abs(d)*52).toLocaleString('en-US')+' a year).'}
+function fuel(){var m=+E('u_m').value,p=+E('u_p').value,d=+E('u_d').value/100,w=m/p*d,y=w*52;
+E('u_mv').textContent=m.toLocaleString('en-US')+' mi';E('u_pv').textContent=p+' MPG';E('u_dv').textContent='$'+d.toFixed(2);
+cu(E('u_g'),m/p);cu(E('u_w'),w,'$');cu(E('u_y'),y,'$');cu(E('u_gn'),y,'$');E('u_gv').style.strokeDashoffset=189*(1-Math.min(y/15000,1))}
+tp();cmp();fuel();
+var TP=E('t_path'),TK=E('t_tk');
+(function loop(t){if(TP.getBoundingClientRect().width){var L=TP.getTotalLength(),k=(t%4500)/4500,e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2,pt=TP.getPointAtLength(e*L);TK.setAttribute('transform','translate('+pt.x+' '+(pt.y-4)+') scale(-1 1)')}requestAnimationFrame(loop)})(0);
+
+// ===== truck slider: cash pours out of the trailer (grows with the rate too) =====
+(function(){
+var m=E('miles'),rp=E('rpm'),CV=document.createElement('canvas'),cx=CV.getContext('2d'),PS=[],hold=false,run=false,hi=false,lv=-1,spill=0,GR=['#2fbf71','#3fd486','#27ae60','#58d68d'],rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+CV.id='cash';document.body.appendChild(CV);
+function sz(){CV.width=innerWidth;CV.height=innerHeight}sz();addEventListener('resize',sz);
+function U(){return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--u'))||1}
+function mt(){var r=parseFloat(rp.value)||0,pos=(m.value-m.min)/(m.max-m.min),nr=r<=3?0:Math.min(1,Math.log10(r/3)/Math.log10(20)),b=r>10?Math.min(9,1+4*Math.log10(r/10)):1;return{pos:pos,n:r<=0?0:Math.max(pos,nr),b:b}}
+function org(){var r=m.getBoundingClientRect(),k=mt(),u=U(),tw=46*u;return{l:r.left+k.pos*(r.width-tw),y:r.top+r.height/2-5*u,n:k.n,b:k.b,u:u,tw:tw}}
+function fill(){var k=mt(),n=k.n,l=n>.85?3:n>.55?2:n>.25?1:0;m.style.setProperty('--fill',k.pos*100+'%');if(l!==lv){m.classList.remove('lv0','lv1','lv2','lv3');m.classList.add('lv'+l);lv=l}}
+function kick(){if(!run){run=true;requestAnimationFrame(tick)}}
+function spawn(c,o,wide){var bb=Math.min(o.b-1,6);for(var i=0;i<c;i++){var a=-Math.PI/2+(Math.random()-.5)*(.5+o.n*.7+(wide?.8:0)+bb*.08),s=(4+Math.random()*(3+o.n*6)+(wide?3:0))*(1+bb*.12)*o.u;PS.push({x:o.l+o.tw*(.1+Math.random()*.5),y:o.y,vx:Math.cos(a)*s-.8*o.u,vy:Math.sin(a)*s,l:50+Math.random()*40+bb*4,r:(Math.random()-.5)*1.2,vr:(Math.random()-.5)*.25,s:(5.5+Math.random()*3.5)*o.u*(.9+o.n*.4)*(1+bb*.05),c:GR[Math.floor(Math.random()*4)]})}
+if(PS.length>420)PS.splice(0,PS.length-420);kick()}
+function flow(o){return Math.min(14,Math.ceil((1+Math.floor(o.n*o.n*2))*o.b*.8))}
+function bill(p){var w=p.s*1.9,h=p.s;cx.fillStyle=p.c;cx.strokeStyle='#0b6b3a';cx.lineWidth=1;cx.beginPath();cx.rect(-w/2,-h/2,w,h);cx.fill();cx.stroke();cx.fillStyle='#0b6b3a';cx.beginPath();cx.arc(0,0,h*.28,0,6.3);cx.fill()}
+function tick(){cx.clearRect(0,0,CV.width,CV.height);
+if(!rm){var o=org();if((hold&&o.n>.3&&Math.random()<.55)||(spill>0&&o.n>.05))spawn(flow(o),o);if(spill>0)spill--}
+for(var i=PS.length-1;i>=0;i--){var p=PS[i];p.vy+=.3*U();p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.r+=p.vr;if(--p.l<=0){PS.splice(i,1);continue}
+cx.save();cx.globalAlpha=Math.min(1,p.l/20);cx.translate(p.x,p.y);cx.rotate(p.r);bill(p);cx.restore()}
+if(PS.length||hold||spill>0)requestAnimationFrame(tick);else run=false}
+m.addEventListener('input',function(){fill();if(rm)return;var o=org();if(o.n>.15)spawn(Math.ceil((1+Math.round(o.n*o.n*6))*Math.min(o.b,5)*.7),o);if(o.n>.85&&!hi){spawn(Math.round(26*Math.min(o.b,4)),o,true);hi=true}else if(o.n<.8)hi=false});
+function rate(){fill();if(rm)return;var o=org();if(o.n>.05){spill=Math.round(70+o.b*18);spawn(Math.ceil(4+o.n*8*Math.min(o.b,5)),o);if(o.n>.85)spawn(Math.round(20*Math.min(o.b,4)),o,true);kick()}}
+rp.addEventListener('input',rate);E('equip').addEventListener('change',rate);
+m.addEventListener('pointerdown',function(){if(rm)return;hold=true;kick()});
+['pointerup','pointercancel','blur'].forEach(function(e){addEventListener(e,function(){hold=false},true)});
+fill();})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logix Dispatch - Professional Trucking Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(19, 27, 46, 0.85);
+            --accent-green: #00e676;
+            --accent-blue: #00b0ff;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)), url('tucks background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .logo span { color: var(--accent-green); }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover { color: var(--accent-green); }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-green), #00b0ff);
+            color: #000;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 230, 118, 0.3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 50px 0 20px 0;
+        }
+
+        .hero-banner {
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: cover;
+        }
+
+        .badge {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--accent-green);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            line-height: 1;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+
+        .section-title h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            letter-spacing: 1px;
+        }
+
+        /* CARDS & CONTAINERS */
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        /* CALCULATOR SECTION */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calc-input-group {
+            margin-bottom: 20px;
+        }
+
+        .calc-input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--accent-blue);
+        }
+
+        .calc-input-group input, .calc-input-group select {
+            width: 100%;
+            padding: 14px;
+            background: rgba(26, 36, 59, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .calc-results {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .res-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .res-row:last-child {
+            border-bottom: none;
+        }
+
+        .res-label {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .res-value {
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .res-highlight {
+            color: var(--accent-green);
+            font-size: 26px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        /* LANES TABLE */
+        .lane-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .lane-table th, .lane-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .lane-table th {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--accent-green);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* LEASE ON / REVIEWS GRID */
+        .lease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .lease-box {
+            background: rgba(26, 36, 59, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .lease-box h3 {
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        /* DEDUCTION GRID */
+        .deduct-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .deduct-card {
+            background: rgba(26, 36, 59, 0.7);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .deduct-card h4 {
+            color: #fff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .deduct-card span {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* PROCESS STEPS */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .step-box {
+            background: rgba(26, 36, 59, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .step-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        /* QUALIFY LIST */
+        .qualify-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .qualify-list li {
+            background: rgba(26, 36, 59, 0.8);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .qualify-list li::before {
+            content: "✔";
+            color: var(--accent-green);
+        }
+
+        /* COMPARE SECTION TABLE */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .compare-table th, .compare-table td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .compare-table th {
+            background: rgba(0, 176, 255, 0.1);
+            color: var(--accent-blue);
+            font-size: 16px;
+        }
+
+        /* EQUIPMENT GRID */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .truck-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(8px);
+            transition: 0.3s;
+        }
+
+        .truck-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .truck-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #1e293b;
+        }
+
+        .truck-info {
+            padding: 25px;
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            background: rgba(26, 36, 59, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* CONTACT FORM */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .authority-selector {
+            grid-column: span 2;
+            background: rgba(26, 36, 59, 0.9);
+            border: 1px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .authority-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .radio-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .radio-card {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .radio-card:hover {
+            border-color: var(--accent-green);
+            background: rgba(0, 230, 118, 0.05);
+        }
+
+        .radio-card input[type="radio"] {
+            width: auto;
+            accent-color: var(--accent-green);
+        }
+
+        .radio-card label {
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .contact-form input, .contact-form textarea, .contact-form select {
+            width: 100%;
+            padding: 14px;
+            background: rgba(26, 36, 59, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            grid-column: span 2;
+            height: 120px;
+        }
+
+        .dynamic-field {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-form button {
+            grid-column: span 2;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 100px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            background: rgba(11, 15, 25, 0.95);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION MENU -->
+    <header>
+        <div class="logo">
+            <img src="truck logo.jpg" alt="Truck Logo" class="logo-img">
+            LOGIX<span>DISPATCH</span>
+        </div>
+        <nav>
+            <a href="#calculator">Calculator</a>
+            <a href="#guarantee">Guarantee</a>
+            <a href="#reviews">Testimonials</a>
+            <a href="#lease-on">Lease On</a>
+            <a href="#dispatch">Dispatch</a>
+            <a href="#deductions">Deductions</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#qualify">Requirements</a>
+            <a href="#compare">Compare</a>
+            <a href="#equipment">Equipment</a>
+            <a href="#questions">FAQ</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn-primary">Get Started</a>
+    </header>
+
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-banner">
+                <img src="truck ground.jpg" alt="Truck Ground Header">
+            </div>
+
+            <div class="hero-layout">
+                <div class="hero-text">
+                    <span class="badge">Next-Gen Dispatch & Lease On</span>
+                    <h1>KEEP YOUR TRUCKS MOVING.<br>MAXIMIZE YOUR GROSS.</h1>
+                    <p>End-to-end dispatching, carrier lease-on programs, transparent fees, and 24/7 dedicated support designed for owner-operators.</p>
+                    <a href="#calculator" class="btn-primary">Calculate Earnings</a>
+                </div>
+                <div class="hero-image">
+                    <img src="truck.webp" alt="Truck Dispatching USA">
+                </div>
+            </div>
+
+            <!-- ADDITION 1: TRUST BADGES & SOCIAL PROOF -->
+            <div class="info-card" style="text-align: center; margin-top: 30px;">
+                <p style="color: var(--text-muted); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
+                    Trusted by 250+ Active Drivers Nationwide & Verified Industry Partners
+                </p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; opacity: 0.9;">
+                    <span style="font-size: 15px; font-weight: 700; color: #fff;">🛡️ FMCSA Compliant Authority</span>
+                    <span style="font-size: 15px; font-weight: 700; color: #fff;">📊 DAT Integrated Network</span>
+                    <span style="font-size: 15px; font-weight: 700; color: #fff;">🚚 Truckstop Pro Partner</span>
+                    <span style="font-size: 15px; font-weight: 700; color: #fff;">⭐ 4.9/5 Driver Satisfaction Rating</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEKLY PROFIT & LANE CALCULATOR SECTION -->
+        <section id="calculator">
+            <div class="section-title">
+                <h2>WEEKLY GROSS PROFIT & LANE CALCULATOR</h2>
+                <p style="color: var(--text-muted);">Estimate your weekly revenue based on live market rates and top regional freight lanes.</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="calc-grid">
+                    <!-- INPUTS -->
+                    <div>
+                        <div class="calc-input-group">
+                            <label>Equipment / Trailer Type</label>
+                            <select id="equip-type" onchange="updateCalculator()">
+                                <option value="2.65" selected>Dry Van ($2.65 / mile avg)</option>
+                                <option value="3.15">Reefer ($3.15 / mile avg)</option>
+                                <option value="3.25">Flatbed ($3.25 / mile avg)</option>
+                                <option value="3.40">Stepdeck / Heavy ($3.40 / mile avg)</option>
+                                <option value="2.30">Hotshot / Box Truck ($2.30 / mile avg)</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-input-group">
+                            <label>Average Weekly Miles Driven: <span id="miles-val" style="color:var(--accent-green)">2,800</span> mi</label>
+                            <input type="range" id="miles-range" min="1200" max="4500" step="100" value="2800" oninput="updateCalculator()">
+                        </div>
+
+                        <div class="calc-input-group">
+                            <label>Custom Rate Per Mile (RPM)</label>
+                            <input type="number" id="custom-rpm" step="0.05" value="2.65" oninput="updateCalculator()">
+                        </div>
+                    </div>
+
+                    <!-- OUTPUTS -->
+                    <div class="calc-results">
+                        <div class="res-row">
+                            <span class="res-label">Estimated Gross Revenue:</span>
+                            <span class="res-value" id="gross-revenue">$7,420.00</span>
+                        </div>
+                        <div class="res-row">
+                            <span class="res-label">Dispatch / Fee Deducted (12%):</span>
+                            <span class="res-value" style="color:#ef4444" id="fee-deduct">-$890.40</span>
+                        </div>
+                        <div class="res-row">
+                            <span class="res-label">Estimated Fuel Costs (~6.5 MPG):</span>
+                            <span class="res-value" style="color:#ef4444" id="fuel-deduct">-$1,800.00</span>
+                        </div>
+                        <div class="res-row">
+                            <span class="res-label">Insurance / Fixed Weekly Deductions:</span>
+                            <span class="res-value" style="color:#ef4444">-$250.00</span>
+                        </div>
+                        <div class="res-row" style="margin-top: 15px; padding-top: 15px; border-top: 2px dashed var(--border-color);">
+                            <span class="res-label" style="color:#fff; font-weight:700;">Est. Driver Take-Home Net:</span>
+                            <span class="res-highlight" id="net-pay">$4,479.60</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOP HIGH PAYING LANES TABLE -->
+                <h3 style="margin-top: 40px; font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px;">Top High-Paying Lanes This Week</h3>
+                <table class="lane-table">
+                    <thead>
+                        <tr>
+                            <th>Origin to Destination</th>
+                            <th>Avg. Distance</th>
+                            <th>Equipment Type</th>
+                            <th>Est. Gross Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chicago, IL ➔ Atlanta, GA</td>
+                            <td>715 Miles</td>
+                            <td>Dry Van / Reefer</td>
+                            <td><strong style="color:var(--accent-green)">$2,350 - $2,800</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Dallas, TX ➔ Columbus, OH</td>
+                            <td>1,020 Miles</td>
+                            <td>Flatbed / Stepdeck</td>
+                            <td><strong style="color:var(--accent-green)">$3,400 - $3,900</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Harrisburg, PA ➔ Lakeland, FL</td>
+                            <td>980 Miles</td>
+                            <td>Reefer / Dry Van</td>
+                            <td><strong style="color:var(--accent-green)">$3,100 - $3,650</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Los Angeles, CA ➔ Phoenix, AZ</td>
+                            <td>370 Miles</td>
+                            <td>Dry Van / Box Truck</td>
+                            <td><strong style="color:var(--accent-green)">$1,300 - $1,650</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ADDITION 2: NO-RISK CARRIER GUARANTEE -->
+        <section id="guarantee">
+            <div class="section-title">
+                <h2>OUR NO-RISK CARRIER GUARANTEE</h2>
+                <p style="color: var(--text-muted);">We eliminate the usual dispatch headaches so you can focus on driving.</p>
+            </div>
+            <div class="info-card">
+                <div class="lease-grid">
+                    <div class="lease-box" style="border-color: var(--accent-green);">
+                        <h3>🚫 Zero Long-Term Lock-In</h3>
+                        <p style="color: var(--text-muted);">No rigid long contracts. Work week-to-week and leave anytime with standard notice if you aren't completely satisfied.</p>
+                    </div>
+                    <div class="lease-box" style="border-color: var(--accent-green);">
+                        <h3>🛑 100% Right of Refusal</h3>
+                        <p style="color: var(--text-muted);">Never forced dispatch. You hold full authority over where you drive, when you take home-time, and which loads you accept.</p>
+                    </div>
+                    <div class="lease-box" style="border-color: var(--accent-green);">
+                        <h3>📄 Full Rate Transparency</h3>
+                        <p style="color: var(--text-muted);">You receive original broker Rate Confirmations sent directly to your phone. What the broker pays is exactly what we report—no hidden cuts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADDITION 3: DRIVER TESTIMONIALS SECTION -->
+        <section id="reviews">
+            <div class="section-title">
+                <h2>WHAT DRIVERS SAY ABOUT US</h2>
+                <p style="color: var(--text-muted);">Real feedback from owner-operators currently hauling with Logix.</p>
+            </div>
+            <div class="lease-grid">
+                <div class="lease-box">
+                    <div style="color: var(--accent-green); font-size: 18px; margin-bottom: 10px;">★★★★★</div>
+                    <p style="color: #fff; font-style: italic; font-size: 14px; margin-bottom: 15px; line-height: 1.6;">
+                        "I leased on 6 months ago with my Sleeper. My average weekly gross went from $5,800 running on my own to $7,900 with Logix dispatchers."
+                    </p>
+                    <h4 style="color: var(--accent-blue); font-size: 15px;">— Marcus T. (Owner-Operator, Reefer)</h4>
+                </div>
+                <div class="lease-box">
+                    <div style="color: var(--accent-green); font-size: 18px; margin-bottom: 10px;">★★★★★</div>
+                    <p style="color: #fff; font-style: italic; font-size: 14px; margin-bottom: 15px; line-height: 1.6;">
+                        "No forced dispatch is real here. If a load doesn't pay $2.80+ or goes somewhere I don't want to drive, my dispatcher simply finds another option."
+                    </p>
+                    <h4 style="color: var(--accent-blue); font-size: 15px;">— Dave & Sarah K. (Team Drivers, Dry Van)</h4>
+                </div>
+                <div class="lease-box">
+                    <div style="color: var(--accent-green); font-size: 18px; margin-bottom: 10px;">★★★★★</div>
+                    <p style="color: #fff; font-style: italic; font-size: 14px; margin-bottom: 15px; line-height: 1.6;">
+                        "The paperwork relief alone is worth it. Invoicing, broker setups, rate confirms—they manage everything while I focus on miles."
+                    </p>
+                    <h4 style="color: var(--accent-blue); font-size: 15px;">— Jason M. (Independent Owner, Flatbed)</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEASE ON SECTION -->
+        <section id="lease-on">
+            <div class="section-title">
+                <h2>LEASE ON PROGRAM</h2>
+                <p style="color: var(--text-muted);">Run under our active DOT/MC Authority with maximum freedom.</p>
+            </div>
+            <div class="info-card">
+                <div class="lease-grid">
+                    <div class="lease-box">
+                        <h3>88% Gross Payout</h3>
+                        <p style="color: var(--text-muted);">Keep 88% of every load. No hidden deduction fees or surprise charges.</p>
+                    </div>
+                    <div class="lease-box">
+                        <h3>Fuel Card Discounts</h3>
+                        <p style="color: var(--text-muted);">Access major fuel networks with up to $0.50/gal savings at the pump.</p>
+                    </div>
+                    <div class="lease-box">
+                        <h3>Insurance & ELD Provided</h3>
+                        <p style="color: var(--text-muted);">Full Liability & Cargo insurance options plus compliance ELD support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISPATCH SERVICES SECTION -->
+        <section id="dispatch">
+            <div class="section-title">
+                <h2>INDEPENDENT DISPATCH SERVICES</h2>
+                <p style="color: var(--text-muted);">Have your own authority? Let us handle all your load negotiations.</p>
+            </div>
+            <div class="info-card">
+                <div class="lease-grid">
+                    <div class="lease-box">
+                        <h3>Dedicated Dispatcher</h3>
+                        <p style="color: var(--text-muted);">Direct 1-on-1 contact with experienced dispatchers who know your preferred lanes.</p>
+                    </div>
+                    <div class="lease-box">
+                        <h3>Rate Negotiation</h3>
+                        <p style="color: var(--text-muted);">We fight for top market rates on DAT, Truckstop, and direct broker channels.</p>
+                    </div>
+                    <div class="lease-box">
+                        <h3>Full Paperwork Handling</h3>
+                        <p style="color: var(--text-muted);">Invoicing, broker setups, rate confirmations, and BOLs handled 100% for you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT WE DEDUCT -->
+        <section id="deductions">
+            <div class="section-title">
+                <h2>WHAT WE DEDUCT</h2>
+                <p style="color: var(--text-muted);">100% Transparency — Zero surprise deductions or hidden costs.</p>
+            </div>
+            <div class="info-card">
+                <div class="deduct-grid">
+                    <div class="deduct-card">
+                        <h4>Dispatch / Lease Percentage <span>12%</span></h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">We keep 12%, you take home 88% of total gross load earnings.</p>
+                    </div>
+                    <div class="deduct-card">
+                        <h4>Liability & Cargo Insurance <span>Weekly Rate</span></h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Standard insurance deducted directly from weekly settlement statement.</p>
+                    </div>
+                    <div class="deduct-card">
+                        <h4>ELD & Telematics Device <span>$15 / wk</span></h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Complete FMCSA compliant logging software and hardware support.</p>
+                    </div>
+                    <div class="deduct-card">
+                        <h4>Fuel Advances / Card Charges <span>At Cost</span></h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Fuel expenses deducted directly based on your actual fuel card usage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE PROCESS - HOW IT WORKS -->
+        <section id="how-it-works">
+            <div class="section-title">
+                <h2>THE PROCESS — HOW IT WORKS</h2>
+                <p style="color: var(--text-muted);">From application to your first high-paying payout in 4 simple steps.</p>
+            </div>
+            <div class="info-card">
+                <div class="process-steps">
+                    <div class="step-box">
+                        <div class="step-num">01</div>
+                        <h4 style="margin-bottom: 8px;">Apply & Upload Docs</h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Submit your CDL, truck inspection, and registration online in under 5 minutes.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-num">02</div>
+                        <h4 style="margin-bottom: 8px;">Agreement Signing</h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Sign our straightforward lease-on or independent dispatch contract digitally.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-num">03</div>
+                        <h4 style="margin-bottom: 8px;">Lane Setup & Dispatch</h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Speak with your dedicated dispatcher to set your preferred lanes, schedule, and gross rate targets.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-num">04</div>
+                        <h4 style="margin-bottom: 8px;">Haul & Get Paid Weekly</h4>
+                        <p style="color: var(--text-muted); font-size: 14px;">Start rolling! Receive direct deposit settlements every Friday with clear itemized paystubs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUALIFY - WHAT YOU NEED -->
+        <section id="qualify">
+            <div class="section-title">
+                <h2>QUALIFY — WHAT YOU NEED</h2>
+                <p style="color: var(--text-muted);">Check requirements needed to start driving under our company.</p>
+            </div>
+            <div class="info-card">
+                <ul class="qualify-list">
+                    <li>Valid Class A CDL with 2+ years experience</li>
+                    <li>Clean Driving Record (MVR) with no major violations</li>
+                    <li>Passing DOT Drug Test and active Clearinghouse record</li>
+                    <li>Clean DOT Annual Truck & Trailer Inspection (Last 30 Days)</li>
+                    <li>Bobtail / Non-Trucking Liability Insurance</li>
+                    <li>ELD Compatible Equipment or Smart Mobile Device</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- COMPARE SECTION -->
+        <section id="compare">
+            <div class="section-title">
+                <h2>COMPARE YOUR OPTIONS</h2>
+                <p style="color: var(--text-muted);">See how our Lease On compares to running under Independent Dispatch.</p>
+            </div>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Lease On under Logix</th>
+                        <th>Independent Dispatch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Authority Needed</strong></td>
+                        <td>None (Use Our MC/DOT)</td>
+                        <td>Your Own Active MC/DOT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payout Percentage</strong></td>
+                        <td>88% Total Gross</td>
+                        <td>Pay 5% - 7% per load</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial Insurance</strong></td>
+                        <td>Provided under our policy</td>
+                        <td>You supply your own policy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fuel Discounts</strong></td>
+                        <td>Included (Company Fuel Card)</td>
+                        <td>Optional Add-on</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- EQUIPMENT SECTION -->
+        <section id="equipment">
+            <div class="section-title">
+                <h2>EQUIPMENT WE DISPATCH</h2>
+                <p style="color: var(--text-muted);">Specialized dispatch solutions for all trailer and truck types.</p>
+            </div>
+            <div class="fleet-grid">
+                <div class="truck-card">
+                    <img src="6 benifits of the dispatch truck.webp" alt="Dry Van & Reefer" class="truck-img">
+                    <div class="truck-info">
+                        <h3>Dry Van & Reefer Trailers</h3>
+                        <p style="color: var(--text-muted);">Consistent year-round freight across high-volume shipping corridors.</p>
+                    </div>
+                </div>
+                <div class="truck-card">
+                    <img src="steps involved in the dispatching.webp" alt="Flatbed & Stepdeck" class="truck-img">
+                    <div class="truck-info">
+                        <h3>Flatbed, Stepdeck & Box Trucks</h3>
+                        <p style="color: var(--text-muted);">High-paying heavy haul, oversized cargo, and local box truck dispatching.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUESTIONS - STRAIGHT ANSWERS -->
+        <section id="questions">
+            <div class="section-title">
+                <h2>QUESTIONS — STRAIGHT ANSWERS</h2>
+                <p style="color: var(--text-muted);">Direct answers to what drivers ask us most before joining.</p>
+            </div>
+            <div class="info-card">
+                <div class="faq-item">
+                    <div class="faq-question">Are there long-term forced contracts?</div>
+                    <div class="faq-answer">No. We believe in earning your business every week. There are no long-term lock-in contracts; you can leave whenever you want with proper notice.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you force dispatch loads?</div>
+                    <div class="faq-answer">Never. You have 100% right of refusal on any load. You tell us where you want to drive, your home time needs, and minimum rate requirements.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How fast do I get paid after completing a load?</div>
+                    <div class="faq-answer">Settlements are processed weekly every Friday via direct ACH deposit once your BOL/POD clean copies are submitted.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use my own fuel card or do I have to use yours?</div>
+                    <div class="faq-answer">You can use your own cards or take advantage of our company fuel discount program to save up to $0.50/gal at major fuel stops nationwide.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADDITION 4: 24/7 SUPPORT BANNER -->
+        <div style="background: rgba(0, 176, 255, 0.1); border: 1px solid var(--accent-blue); padding: 25px; border-radius: 12px; margin-top: 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h3 style="color: #fff; font-size: 20px; margin-bottom: 5px;">Have Urgent Questions Before Signing Up?</h3>
+                <p style="color: var(--text-muted); font-size: 14px;">Speak directly with our onboarding desk — No automated phone trees.</p>
+            </div>
+            <div>
+                <a href="tel:18005550199" class="btn-primary" style="background: var(--accent-blue); color: #000; font-size: 15px;">📞 Call (800) 555-0199</a>
+            </div>
+        </div>
+
+        <!-- CONTACT SECTION WITH INTERACTIVE AUTHORITY SELECTOR -->
+        <section id="contact">
+            <div class="section-title">
+                <h2>CARRIER APPLICATION & CONTACT</h2>
+                <p style="color: var(--text-muted);">Select your setup option below to customize your onboarding form.</p>
+            </div>
+            <div class="info-card">
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Application submitted successfully! A dispatch representative will reach out shortly.');">
+                    
+                    <div class="authority-selector">
+                        <div class="authority-title">Do you currently operate under your own MC Operating Authority? *</div>
+                        <div class="radio-options">
+                            <div class="radio-card">
+                                <input type="radio" id="auth-yes" name="mc_authority" value="dispatch" onchange="toggleAuthorityFields()" checked>
+                                <label for="auth-yes">Yes, I have an active MC/DOT Authority — Request Independent Dispatch</label>
+                            </div>
+                            <div class="radio-card">
+                                <input type="radio" id="auth-no" name="mc_authority" value="lease" onchange="toggleAuthorityFields()">
+                                <label for="auth-no">No, I want to Lease On under Logix Operating Authority</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="text" placeholder="Full Name / Primary Contact *" required>
+                    <input type="tel" placeholder="Direct Phone Number *" required>
+                    <input type="email" placeholder="Email Address *" required>
+                    <input type="text" placeholder="Company Name (if applicable)">
+
+                    <div id="fields-dispatch" class="dynamic-field">
+                        <input type="text" placeholder="MC Number (e.g. MC-123456) *" required>
+                        <input type="text" placeholder="DOT Number (e.g. 1234567) *" required>
+                    </div>
+
+                    <div id="fields-lease" class="dynamic-field" style="display: none;">
+                        <select>
+                            <option value="">Equipment Type Owned</option>
+                            <option value="tractor-only">Sleeper Tractor Only</option>
+                            <option value="tractor-trailer">Tractor & Trailer Package</option>
+                            <option value="box-truck">Straight Box Truck</option>
+                        </select>
+                        <select>
+                            <option value="">CDL Class A Experience</option>
+                            <option value="2-3">2 - 3 Years</option>
+                            <option value="3-5">3 - 5 Years</option>
+                            <option value="5+">5+ Years</option>
+                        </select>
+                    </div>
+
+                    <textarea placeholder="Tell us about your preferred equipment, lanes, home time needs, or questions..."></textarea>
+                    
+                    <button type="submit" class="btn-primary" style="cursor: pointer; font-size: 16px;">Submit Application</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Logix Dispatch Services. All Rights Reserved.</p>
+            <div style="margin-top: 10px;">
+                <a href="#calculator">Calculator</a> | 
+                <a href="#guarantee">Guarantee</a> | 
+                <a href="#reviews">Testimonials</a> | 
+                <a href="#lease-on">Lease On</a> | 
+                <a href="#dispatch">Dispatch</a> | 
+                <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR CALCULATOR & DYNAMIC FORM -->
+    <script>
+        function toggleAuthorityFields() {
+            const isDispatch = document.getElementById('auth-yes').checked;
+            const dispatchFields = document.getElementById('fields-dispatch');
+            const leaseFields = document.getElementById('fields-lease');
+
+            if (isDispatch) {
+                dispatchFields.style.display = 'grid';
+                leaseFields.style.display = 'none';
+            } else {
+                dispatchFields.style.display = 'none';
+                leaseFields.style.display = 'grid';
+            }
+        }
+
+        function updateCalculator() {
+            const miles = parseFloat(document.getElementById('miles-range').value);
+            document.getElementById('miles-val').innerText = miles.toLocaleString();
+
+            const equipType = document.getElementById('equip-type');
+            const customRpmInput = document.getElementById('custom-rpm');
+            
+            if (document.activeElement === equipType) {
+                customRpmInput.value = equipType.value;
+            }
+
+            const rpm = parseFloat(customRpmInput.value) || 0;
+
+            const gross = miles * rpm;
+            const fee = gross * 0.12;
+            const fuel = (miles / 6.5) * 4.15;
+            const insurance = 250;
+            const net = gross - fee - fuel - insurance;
+
+            document.getElementById('gross-revenue').innerText = '$' + gross.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('fee-deduct').innerText = '-$' + fee.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('fuel-deduct').innerText = '-$' + fuel.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('net-pay').innerText = '$' + Math.max(0, net).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        window.onload = updateCalculator;
+    </script>
+
+</body>
+</html>
